@@ -1,4 +1,4 @@
-Data/
+Data/VOC
 dataloader/test.py
 pytorch-venv
 model/V3/test.py
