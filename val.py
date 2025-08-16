@@ -17,11 +17,11 @@ OS_SYSTEM = platform.system()
 SEED = 2023
 torch.manual_seed(SEED)
 
-from dataloader import Dataset, BasicTransform, to_image
+from dataloader import Dataset, BasicTransform
 from model import YoloModel
 from utils import (Evaluator, build_basic_logger, generate_random_color, transform_xcycwh_to_x1y1x2y2,
                   filter_confidence, run_NMS, scale_coords, transform_x1y1x2y2_to_x1y1wh, 
-                  visualize_prediction, imwrite, analyse_mAP_info)
+                  visualize_prediction, imwrite, analyse_mAP_info,to_image)
 
 @torch.no_grad()
 def validate(args, dataloader, model, evaluator, epoch=0, save_result=False):
