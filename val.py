@@ -18,7 +18,7 @@ SEED = 2023
 torch.manual_seed(SEED)
 
 from dataloader import Dataset, BasicTransform
-from model import YoloModel
+from model import YOLOv3
 from utils import (Evaluator, build_basic_logger, generate_random_color, transform_xcycwh_to_x1y1x2y2,
                   filter_confidence, run_NMS, scale_coords, transform_x1y1x2y2_to_x1y1wh, 
                   visualize_prediction, imwrite, analyse_mAP_info,to_image)
