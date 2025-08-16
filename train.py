@@ -162,7 +162,7 @@ def main_work(rank, world_size, args, logger):
     args.workers = min([os.cpu_count() // max(world_size, 1), args.batch_size if args.batch_size > 1 else 0, args.workers])
 
     train_dataset = Dataset(yaml_path=args.data, phase="train")
-    train_transformer = AugmentTransform(input_size=args.train_size)
+    train_transformer = AugmentTransform(input_size=args.train_size,dataset=train_dataset)
     train_dataset.load_transformer(transformer=train_transformer)
     train_sampler = distributed.DistributedSampler(train_dataset, num_replicas=world_size, rank=args.rank, shuffle=True)
     train_loader = DataLoader(dataset=train_dataset, collate_fn=Dataset.collate_fn, batch_size=args.batch_size, 
