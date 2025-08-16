@@ -52,7 +52,13 @@ class YOLOv3(nn.Module):
             return preds
         else:
             return torch.cat(preds,dim = 1)
-        
+    
+    def set_grid_xy(self, input_size):
+        self.head.detect_m.set_grid_xy(input_size=input_size)
+        self.head.detect_l.set_grid_xy(input_size=input_size)
+        self.head.detect_s.set_grid_xy(input_size=input_size)
+
+
 if __name__ == "__main__":
     input_size = 416
     num_classes = 20
