@@ -116,7 +116,7 @@ class Dataset:
                     x["bbox"] = [round(item,2) for item in label[j][1:5].tolist()]
                     x["area"] = round((x["bbox"][2] * x["bbox"][3]),2)
                     x["iscrowd"] = 0
-                    x["category_d"] = int(label[j][0])
+                    x["category_id"] = int(label[j][0])
                     x["segmentation"] = []
                     mAP_file_formatter["annotations"].append(x)
                     lbl_id += 1
