@@ -56,7 +56,14 @@ def build_backbone():
     model.load_state_dict(ckpt["model_state"], strict=False)
     return model, feat_dims
 
+
+
 if __name__ == "__main__":
-    model,feat_dims = build_backbone()
+    input_size = 416
+    device = torch.device('cpu')
+    backbone, feat_dims = build_backbone()
 
-
+    x = torch.randn(1, 3, input_size, input_size).to(device)
+    ftrs = backbone(x)
+    for ftr in ftrs:
+        print(ftr.shape)
