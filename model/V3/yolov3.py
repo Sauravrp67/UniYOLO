@@ -18,7 +18,7 @@ if str(ROOT) not in sys.path:
 
 
 model_urls = {
-    "yolov3-base": None,
+    "yolov3-base": 'https://drive.google.com/file/d/1duXcafb2QgORHDO1w-7E1UusLfWInwgA/view',
     "yolov3-spp": None,
     "yolov3-tiny": None,
 }
