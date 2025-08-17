@@ -6,3 +6,5 @@ utils/loss/test.py
 utils/loss/best (1).pt
 utils/test.py
 utils/sys
+weights/darknet53.pt
+

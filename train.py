@@ -98,6 +98,7 @@ def train(args, dataloader, model, ema, criterion, optimizer, scaler):
     for loss_name in loss_type:
         losses[loss_name] /= len(dataloader)
         loss_str += f"{loss_name}: {losses[loss_name]:.4f}  "
+        print(f"{loss_name}: {losses[loss_name]:.4f}")
     return loss_str
 
 
@@ -247,7 +248,7 @@ def main_work(rank, world_size, args, logger):
                 mAP_dict, eval_text = validate(args=args, dataloader=val_loader, model=ema.module, evaluator=evaluator, epoch=epoch)
                 ap95 = mAP_dict["all"]["mAP_5095"]
                 logging.warning(eval_text)
-
+                print(f"mAP:{ap95}")
                 if ap95 > best_score:
                     result_analyis(args=args, mAP_dict=mAP_dict["all"])
                     best_epoch, best_score, best_mAP_str = epoch, ap95, eval_text
