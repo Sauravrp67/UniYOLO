@@ -113,6 +113,7 @@ def parse_args(make_dirs=True):
     args.data = ROOT / "data" / args.data
     args.exp_path = ROOT / "experiment" / args.exp
     args.ckpt_path = args.exp_path / "weight" / args.ckpt_name
+    print(f"Checkpoint Path:{args.ckpt_path}")
     args.img_log_dir = args.exp_path / "val-image"
     
     if make_dirs:

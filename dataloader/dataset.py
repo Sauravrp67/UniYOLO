@@ -71,6 +71,7 @@ class Dataset:
         if len(label) == 0:
             label = np.array([[-1, 0, 0, 0, 0]], dtype=np.float32)
         return label
+    
     def load_transformer(self,transformer):
         self.transformer = transformer
     
