@@ -7,7 +7,7 @@ from torch import nn
 
 from units import Conv, ResBlock
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 
 model_urls = {
@@ -55,5 +55,8 @@ def build_backbone():
     ckpt = torch.load(ROOT / "weights" / "darknet53.pt")
     model.load_state_dict(ckpt["model_state"], strict=False)
     return model, feat_dims
+
+if __name__ == "__main__":
+    model,feat_dims = build_backbone()
 
 
