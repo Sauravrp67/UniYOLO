@@ -1,5 +1,3 @@
-### In Reference to: https://github.com/rafaelpadilla/Object-Detection-Metrics
-
 import json
 from collections import defaultdict
 
@@ -8,6 +6,9 @@ import numpy as np
 
 
 class Evaluator():
+    ########################################################################################
+    #  This work is refered by: https://github.com/rafaelpadilla/Object-Detection-Metrics  #
+    ########################################################################################
     def __init__(self, annotation_file):
         self.maxDets = 100
         self.areaRng = [[0 ** 2, 1e5 ** 2], [0 ** 2, 32 ** 2], [32 ** 2, 96 ** 2], [96 ** 2, 1e5 ** 2]]
@@ -332,4 +333,3 @@ class Evaluator():
             elif self.areaRng[3][0] <= dt["area"] < self.areaRng[3][1]:
                 res[self.areaRngLbl[3]].append(dt)
         return res
-
