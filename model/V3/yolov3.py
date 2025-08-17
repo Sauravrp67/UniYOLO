@@ -1,6 +1,6 @@
 ## Import the basic building blocks of YOLOv3
 from units import Conv
-from backbone import build_darknet
+from backbone import build_backbone
 from neck import FPN
 from head import YoloHead
 
@@ -31,7 +31,7 @@ class YOLOv3(nn.Module):
         self.num_classes = num_classes
         self.anchors = torch.tensor(anchors)
         self.model_type = model_type
-        self.backbone,self.feat_dims = build_darknet()
+        self.backbone,self.feat_dims = build_backbone()
         self.neck = FPN(feat_dims=self.feat_dims)
         self.head = YoloHead(in_channels = self.feat_dims,input_size = self.input_size,num_classes = 20,anchors=anchors)
 
