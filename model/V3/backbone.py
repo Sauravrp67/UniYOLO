@@ -5,7 +5,7 @@ import gdown
 import torch
 from torch import nn
 
-from element import Conv, ResBlock
+from units import Conv, ResBlock
 
 ROOT = Path(__file__).resolve().parents[1]
 
