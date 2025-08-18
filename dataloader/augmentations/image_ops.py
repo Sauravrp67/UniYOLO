@@ -31,3 +31,4 @@ class Resize:
     def __call__(self,image,boxes = None,labels = None):
         image = cv2.resize(image,(self.size,self.size))
         return image,boxes,labels
+    

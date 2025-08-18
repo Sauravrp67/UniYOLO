@@ -61,7 +61,8 @@ def to_image(tensor, mean=MEAN, std=STD):
 
 
 def denormalize(image, mean=MEAN, std=STD):
-    image *= std
-    image += mean
-    image *= 255.
-    return image.astype(np.uint8)
+    image_temp = image.copy()
+    image_temp *= std
+    image_temp += mean
+    image_temp *= 255.
+    return image_temp.astype(np.uint8)

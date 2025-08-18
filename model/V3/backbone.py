@@ -52,7 +52,7 @@ def build_backbone():
     download_path = ROOT / "weights" / "darknet53.pt"
     if not download_path.is_file():
         gdown.download(model_urls["darknet53-448"], str(download_path), quiet=False, fuzzy=True)
-    ckpt = torch.load(ROOT / "weights" / "darknet53.pt")
+    ckpt = torch.load(ROOT / "weights" / "darknet53.pt",map_location = 'cpu')
     model.load_state_dict(ckpt["model_state"], strict=False)
     return model, feat_dims
 

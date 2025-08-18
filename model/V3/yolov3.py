@@ -12,7 +12,7 @@ import sys
 import gdown
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
@@ -43,7 +43,7 @@ class YOLOv3(nn.Module):
                 gdown.download(model_urls[f"yolov3-{self.model_type}"], str(download_path), quiet=False, fuzzy=True)
 
             ckpt = torch.load(ROOT / "weights" / f"yolov3-{self.model_type}.pt", map_location="cpu")
-            self.load_state_dict(ckpt["model_state"], strict=False)
+            self.load_state_dict(ckpt["model_state"], strict=True)
     def forward(self,x):
         ftrs = self.backbone(x)
         ftrs = self.neck(ftrs)
@@ -74,15 +74,17 @@ if __name__ == "__main__":
     model_type = "base"
 
     
-    x = torch.randn(8,3,input_size,input_size).to('cpu')
+    x = torch.randn(1,3,input_size,input_size).to('cpu')
     model = YOLOv3(input_size = input_size,num_classes = num_classes,anchors = anchors,model_type=model_type,pretrained = False)
     model.train()
 
     output = model(x)
-    for preds in output:
-        print(preds.shape)
+    # for preds in output:
+    #     print(preds.shape)
     model.eval()
     output2 = model(x)
     # assert (output2.shape == torch.Size([8,3549,3,6])), "Final Output sized not matched"
 
-    print(output2.shape)
+    print(output2[:,10,1:5] * 416)
+    print(output2[:,10,-1])
+    print(output2[:,10,0])

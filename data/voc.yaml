@@ -1,4 +1,4 @@
-PATH: ../../Data/VOC
+PATH: ../Data/VOC
 
 TRAIN: 
  - images/train2007
