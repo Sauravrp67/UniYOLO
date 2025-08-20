@@ -6,4 +6,5 @@ ROOT = Path(__file__).resolve().parents[0]
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
-from V3 import YOLOv3
+from V3 import *
+

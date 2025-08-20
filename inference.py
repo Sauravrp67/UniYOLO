@@ -132,8 +132,9 @@ def run_inference(model, device, source, input_size, conf_thresh, nms_iou_thresh
         fps = 1.0 / (time.time() - t0)
         names = id2name(labels) if labels is not None and len(labels) else []
         print(f"FPS: {fps:.2f} | labels: {', '.join(sorted(set(names)))}" if names else f"FPS: {fps:.2f} | labels: none")
-
+        start_time = time.time()
         vis = draw_dets(image_out, boxes, labels, conf)
+        print(f"Drawing:{time.time() - start_time}")
         cv2.putText(vis, f"FPS: {fps:.2f}", (10, 30),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         cv2.imshow("Prediction", vis)
