@@ -1,4 +1,4 @@
-PATH: ../Data/VOC
+PATH: /home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/Data/VOC
 
 TRAIN: 
  - images/train2007

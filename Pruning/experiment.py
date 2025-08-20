@@ -53,7 +53,6 @@ def collect_ignored_convs(model, keep_stem=False, keep_stage_entry=False):
         if not isinstance(m, nn.Conv2d):
             continue
 
-
         if name.endswith(".detect"):
             ignored.add(m)
             continue
