@@ -44,7 +44,7 @@ class RandomMixUp:
                  provider: SampleProvider,
                  p: float = 0.15,
                  alpha: float = 0.20,
-                 pad_value: int | tuple[int, int, int] = 114,
+                 pad_value: Tuple[float, float, float] = 114,
                  apply_lambda_to_labels = False,
                  min_visible_lambda:float = 0.20):
         self.provider = provider

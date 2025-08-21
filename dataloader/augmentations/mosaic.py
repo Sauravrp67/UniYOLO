@@ -29,10 +29,10 @@ class RandomMosaic:
     """
     def __init__(self,
                  provider: SampleProvider,
-                 output_size: int | Sequence[int],
+                 output_size: int,
                  scale_range: Tuple[float, float] = (0.5, 1.5),
                  center_ratio_range: Tuple[float, float] = (0.5, 1.5),
-                 pad_value: int | tuple[int, int, int] = 114,
+                 pad_value: Tuple[float, float, float] = 114,
                  min_box_wh: int = 2,
                  min_visible: float = 0.5,
                  enforce_min_fill: float = 0.0,

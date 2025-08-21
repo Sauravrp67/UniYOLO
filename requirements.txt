@@ -48,6 +48,7 @@ soupsieve==2.7
 sympy==1.14.0
 thop==0.1.1.post2209072238
 torch==2.7.1
+torch-pruning==1.6.0
 torchaudio==2.7.1
 torchvision==0.22.1
 tqdm==4.67.1

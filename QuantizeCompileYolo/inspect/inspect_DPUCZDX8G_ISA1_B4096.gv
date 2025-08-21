@@ -1,0 +1,1444 @@
+digraph YOLOv3 {
+	24156 [label="type:nndct_const
+name:YOLOv3::24156
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	24158 [label="type:nndct_const
+name:YOLOv3::24158
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	24160 [label="type:nndct_const
+name:YOLOv3::24160
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	24162 [label="type:nndct_const
+name:YOLOv3::24162
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	24164 [label="type:nndct_const
+name:YOLOv3::24164
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	24166 [label="type:nndct_const
+name:YOLOv3::24166
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	24114 [label="type:nndct_const
+name:YOLOv3::24114
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	24115 [label="type:nndct_const
+name:YOLOv3::24115
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	24118 [label="type:nndct_const
+name:YOLOv3::24118
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	24121 [label="type:nndct_const
+name:YOLOv3::24121
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	24131 [label="type:nndct_const
+name:YOLOv3::24131
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	24132 [label="type:nndct_const
+name:YOLOv3::24132
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	24135 [label="type:nndct_const
+name:YOLOv3::24135
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	24138 [label="type:nndct_const
+name:YOLOv3::24138
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	24148 [label="type:nndct_const
+name:YOLOv3::24148
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	24149 [label="type:nndct_const
+name:YOLOv3::24149
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	24152 [label="type:nndct_const
+name:YOLOv3::24152
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	24155 [label="type:nndct_const
+name:YOLOv3::24155
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	input_0 [label="type:nndct_input
+name:YOLOv3::input_0
+assigned device:user
+out shape:[[1, 416, 416, 3]]" color=black]
+	"YOLOv3/DarkNet53[backbone]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.3" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.3
+assigned device:dpu
+out shape:[[1, 416, 416, 32]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.7" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.7
+assigned device:cpu
+out shape:[[1, 416, 416, 32]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.9" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.9
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.13" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.13
+assigned device:cpu
+out shape:[[1, 208, 208, 64]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.15" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.15
+assigned device:dpu
+out shape:[[1, 208, 208, 32]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.19" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.19
+assigned device:cpu
+out shape:[[1, 208, 208, 32]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.21" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.21
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.25" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.25
+assigned device:cpu
+out shape:[[1, 208, 208, 64]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/21095" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/21095
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.27" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.27
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.31" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.31
+assigned device:cpu
+out shape:[[1, 104, 104, 128]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.33" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.33
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.37" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.37
+assigned device:cpu
+out shape:[[1, 104, 104, 64]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.39" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.39
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.43" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.43
+assigned device:cpu
+out shape:[[1, 104, 104, 128]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/21187" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/21187
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.45" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.45
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.49" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.49
+assigned device:cpu
+out shape:[[1, 104, 104, 64]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.51" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.51
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.55" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.55
+assigned device:cpu
+out shape:[[1, 104, 104, 128]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/21249" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/21249
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.57" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.57
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.61" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.61
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.63" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.63
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.67" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.67
+assigned device:cpu
+out shape:[[1, 52, 52, 128]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.69" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.69
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.73" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.73
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/21341" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/21341
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.75" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.75
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.79" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.79
+assigned device:cpu
+out shape:[[1, 52, 52, 128]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.81" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.81
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.85" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.85
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/21403" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/21403
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.87" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.87
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.91" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.91
+assigned device:cpu
+out shape:[[1, 52, 52, 128]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.93" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.93
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.97" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.97
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/21465" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/21465
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.99" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.99
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.103" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.103
+assigned device:cpu
+out shape:[[1, 52, 52, 128]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.105" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.105
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.109" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.109
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/21527" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/21527
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.111" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.111
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.115" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.115
+assigned device:cpu
+out shape:[[1, 52, 52, 128]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.117" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.117
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.121" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.121
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/21589" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/21589
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.123" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.123
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.127" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.127
+assigned device:cpu
+out shape:[[1, 52, 52, 128]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.129" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.129
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.133" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.133
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/21651" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/21651
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.135" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.135
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.139" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.139
+assigned device:cpu
+out shape:[[1, 52, 52, 128]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.141" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.141
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.145" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.145
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/21713" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/21713
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.147" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.147
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.151" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.151
+assigned device:cpu
+out shape:[[1, 52, 52, 128]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.153" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.153
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.157" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.157
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/21775" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/21775
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.159" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.159
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.163" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.163
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.165" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.165
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.169" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.169
+assigned device:cpu
+out shape:[[1, 26, 26, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.171" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.171
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.175" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.175
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/21867" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/21867
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.177" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.177
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.181" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.181
+assigned device:cpu
+out shape:[[1, 26, 26, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.183" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.183
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.187" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.187
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/21929" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/21929
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.189" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.189
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.193" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.193
+assigned device:cpu
+out shape:[[1, 26, 26, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.195" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.195
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.199" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.199
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/21991" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/21991
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.201" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.201
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.205" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.205
+assigned device:cpu
+out shape:[[1, 26, 26, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.207" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.207
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.211" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.211
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/22053" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/22053
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.213" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.213
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.217" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.217
+assigned device:cpu
+out shape:[[1, 26, 26, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.219" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.219
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.223" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.223
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/22115" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/22115
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.225" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.225
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.229" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.229
+assigned device:cpu
+out shape:[[1, 26, 26, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.231" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.231
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.235" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.235
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/22177" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/22177
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.237" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.237
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.241" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.241
+assigned device:cpu
+out shape:[[1, 26, 26, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.243" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.243
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.247" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.247
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/22239" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/22239
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.249" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.249
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.253" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.253
+assigned device:cpu
+out shape:[[1, 26, 26, 256]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.255" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.255
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.259" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.259
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/22301" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/22301
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.261" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.261
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.265" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.265
+assigned device:cpu
+out shape:[[1, 13, 13, 1024]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.267" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.267
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.271" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.271
+assigned device:cpu
+out shape:[[1, 13, 13, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.273" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.273
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.277" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.277
+assigned device:cpu
+out shape:[[1, 13, 13, 1024]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/22393" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/22393
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.279" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.279
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.283" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.283
+assigned device:cpu
+out shape:[[1, 13, 13, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.285" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.285
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.289" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.289
+assigned device:cpu
+out shape:[[1, 13, 13, 1024]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/22455" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/22455
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.291" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.291
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.295" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.295
+assigned device:cpu
+out shape:[[1, 13, 13, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.297" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.297
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.301" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.301
+assigned device:cpu
+out shape:[[1, 13, 13, 1024]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/22517" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/22517
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.303" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.303
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.307" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.307
+assigned device:cpu
+out shape:[[1, 13, 13, 512]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.309" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.309
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.313" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.313
+assigned device:cpu
+out shape:[[1, 13, 13, 1024]]" color=red]
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/22579" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/22579
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.315" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.315
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.319" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.319
+assigned device:cpu
+out shape:[[1, 13, 13, 512]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.321" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.321
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.325" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.325
+assigned device:cpu
+out shape:[[1, 13, 13, 1024]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.327" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.327
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.331" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.331
+assigned device:cpu
+out shape:[[1, 13, 13, 512]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.333" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.333
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.337" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.337
+assigned device:cpu
+out shape:[[1, 13, 13, 1024]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.339" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.339
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.343" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.343
+assigned device:cpu
+out shape:[[1, 13, 13, 512]]" color=red]
+	"YOLOv3/FPN[neck]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.345" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.345
+assigned device:dpu
+out shape:[[1, 13, 13, 256]]" color=blue]
+	"YOLOv3/FPN[neck]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.349" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.349
+assigned device:cpu
+out shape:[[1, 13, 13, 256]]" color=red]
+	"YOLOv3/FPN[neck]/Upsample[upsample]/ret.351" [label="type:nndct_resize
+name:YOLOv3::YOLOv3/FPN[neck]/Upsample[upsample]/ret.351
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/FPN[neck]/ret.353" [label="type:nndct_concat
+name:YOLOv3::YOLOv3/FPN[neck]/ret.353
+assigned device:dpu
+out shape:[[1, 26, 26, 768]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.355" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.355
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.359" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.359
+assigned device:cpu
+out shape:[[1, 26, 26, 256]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.361" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.361
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.365" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.365
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.367" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.367
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.371" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.371
+assigned device:cpu
+out shape:[[1, 26, 26, 256]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.373" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.373
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.377" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.377
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.379" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.379
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.383" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.383
+assigned device:cpu
+out shape:[[1, 26, 26, 256]]" color=red]
+	"YOLOv3/FPN[neck]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.385" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.385
+assigned device:dpu
+out shape:[[1, 26, 26, 128]]" color=blue]
+	"YOLOv3/FPN[neck]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.389" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.389
+assigned device:cpu
+out shape:[[1, 26, 26, 128]]" color=red]
+	"YOLOv3/FPN[neck]/Upsample[upsample]/ret.391" [label="type:nndct_resize
+name:YOLOv3::YOLOv3/FPN[neck]/Upsample[upsample]/ret.391
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/FPN[neck]/ret.393" [label="type:nndct_concat
+name:YOLOv3::YOLOv3/FPN[neck]/ret.393
+assigned device:dpu
+out shape:[[1, 52, 52, 384]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.395" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.395
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.399" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.399
+assigned device:cpu
+out shape:[[1, 52, 52, 128]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.401" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.401
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.405" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.405
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.407" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.407
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.411" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.411
+assigned device:cpu
+out shape:[[1, 52, 52, 128]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.413" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.413
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.417" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.417
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.419" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.419
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.423" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.423
+assigned device:cpu
+out shape:[[1, 52, 52, 128]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.425" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.425
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.429" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.429
+assigned device:cpu
+out shape:[[1, 52, 52, 256]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv2d[detect]/ret.431" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv2d[detect]/ret.431
+assigned device:dpu
+out shape:[[1, 52, 52, 75]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.437" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.437
+assigned device:dpu
+out shape:[[1, 2704, 3, 25]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.439" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.439
+assigned device:cpu
+out shape:[[1, 2704, 3, 1]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.441" [label="type:nndct_sigmoid
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.441
+assigned device:cpu
+out shape:[[1, 2704, 3, 1]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.443" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.443
+assigned device:cpu
+out shape:[[1, 2704, 3, 2]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.445" [label="type:nndct_sigmoid
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.445
+assigned device:cpu
+out shape:[[1, 2704, 3, 2]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.447" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.447
+assigned device:cpu
+out shape:[[1, 2704, 3, 2]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.449" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.449
+assigned device:cpu
+out shape:[[1, 2704, 3, 20]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.451" [label="type:nndct_concat
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.451
+assigned device:cpu
+out shape:[[1, 2704, 3, 4]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.453" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.453
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.455" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.455
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.457" [label="type:nndct_elemwise_div
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.457
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.459" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.459
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.461" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.461
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.463" [label="type:nndct_elemwise_div
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.463
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.465" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.465
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.467" [label="type:nndct_elemwise_exp
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.467
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.469" [label="type:nndct_elemwise_mul
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.469
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.471" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.471
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.473" [label="type:nndct_elemwise_exp
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.473
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.475" [label="type:nndct_elemwise_mul
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.475
+assigned device:cpu
+out shape:[[1, 2704, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.477" [label="type:nndct_stack
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.477
+assigned device:cpu
+out shape:[[1, 2704, 3, 4]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.479" [label="type:nndct_sigmoid
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.479
+assigned device:cpu
+out shape:[[1, 2704, 3, 20]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.481" [label="type:nndct_elemwise_mul
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.481
+assigned device:cpu
+out shape:[[1, 2704, 3, 20]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/r.9" [label="type:nndct_max
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/r.9
+assigned device:dpu
+out shape:[[1, 2704, 3], [1, 2704, 3]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.483" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.483
+assigned device:dpu
+out shape:[[1, 2704, 3, 1]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.485" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.485
+assigned device:dpu
+out shape:[[1, 2704, 3, 1]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.487" [label="type:nndct_concat
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.487
+assigned device:dpu
+out shape:[[1, 2704, 3, 6]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.489" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.489
+assigned device:dpu
+out shape:[[1, 8112, 6]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.491" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.491
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.495" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.495
+assigned device:cpu
+out shape:[[1, 26, 26, 512]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv2d[detect]/ret.497" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv2d[detect]/ret.497
+assigned device:dpu
+out shape:[[1, 26, 26, 75]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.503" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.503
+assigned device:dpu
+out shape:[[1, 676, 3, 25]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.505" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.505
+assigned device:cpu
+out shape:[[1, 676, 3, 1]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.507" [label="type:nndct_sigmoid
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.507
+assigned device:cpu
+out shape:[[1, 676, 3, 1]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.509" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.509
+assigned device:cpu
+out shape:[[1, 676, 3, 2]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.511" [label="type:nndct_sigmoid
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.511
+assigned device:cpu
+out shape:[[1, 676, 3, 2]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.513" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.513
+assigned device:cpu
+out shape:[[1, 676, 3, 2]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.515" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.515
+assigned device:cpu
+out shape:[[1, 676, 3, 20]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.517" [label="type:nndct_concat
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.517
+assigned device:cpu
+out shape:[[1, 676, 3, 4]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.519" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.519
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.521" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.521
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.523" [label="type:nndct_elemwise_div
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.523
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.525" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.525
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.527" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.527
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.529" [label="type:nndct_elemwise_div
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.529
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.531" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.531
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.533" [label="type:nndct_elemwise_exp
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.533
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.535" [label="type:nndct_elemwise_mul
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.535
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.537" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.537
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.539" [label="type:nndct_elemwise_exp
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.539
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.541" [label="type:nndct_elemwise_mul
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.541
+assigned device:cpu
+out shape:[[1, 676, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.543" [label="type:nndct_stack
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.543
+assigned device:cpu
+out shape:[[1, 676, 3, 4]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.545" [label="type:nndct_sigmoid
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.545
+assigned device:cpu
+out shape:[[1, 676, 3, 20]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.547" [label="type:nndct_elemwise_mul
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.547
+assigned device:cpu
+out shape:[[1, 676, 3, 20]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/r.21" [label="type:nndct_max
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/r.21
+assigned device:dpu
+out shape:[[1, 676, 3], [1, 676, 3]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.549" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.549
+assigned device:dpu
+out shape:[[1, 676, 3, 1]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.551" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.551
+assigned device:dpu
+out shape:[[1, 676, 3, 1]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.553" [label="type:nndct_concat
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.553
+assigned device:dpu
+out shape:[[1, 676, 3, 6]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.555" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.555
+assigned device:dpu
+out shape:[[1, 2028, 6]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.557" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.557
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.561" [label="type:nndct_leaky_relu
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.561
+assigned device:cpu
+out shape:[[1, 13, 13, 1024]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv2d[detect]/ret.563" [label="type:nndct_conv2d
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv2d[detect]/ret.563
+assigned device:dpu
+out shape:[[1, 13, 13, 75]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.569" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.569
+assigned device:dpu
+out shape:[[1, 169, 3, 25]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.571" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.571
+assigned device:cpu
+out shape:[[1, 169, 3, 1]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.573" [label="type:nndct_sigmoid
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.573
+assigned device:cpu
+out shape:[[1, 169, 3, 1]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.575" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.575
+assigned device:cpu
+out shape:[[1, 169, 3, 2]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.577" [label="type:nndct_sigmoid
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.577
+assigned device:cpu
+out shape:[[1, 169, 3, 2]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.579" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.579
+assigned device:cpu
+out shape:[[1, 169, 3, 2]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.581" [label="type:nndct_strided_slice
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.581
+assigned device:cpu
+out shape:[[1, 169, 3, 20]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.583" [label="type:nndct_concat
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.583
+assigned device:cpu
+out shape:[[1, 169, 3, 4]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.585" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.585
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.587" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.587
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.589" [label="type:nndct_elemwise_div
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.589
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.591" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.591
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.593" [label="type:nndct_elemwise_add
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.593
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.595" [label="type:nndct_elemwise_div
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.595
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.597" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.597
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.599" [label="type:nndct_elemwise_exp
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.599
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.601" [label="type:nndct_elemwise_mul
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.601
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.603" [label="type:nndct_select
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.603
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.605" [label="type:nndct_elemwise_exp
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.605
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.607" [label="type:nndct_elemwise_mul
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.607
+assigned device:cpu
+out shape:[[1, 169, 3]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.609" [label="type:nndct_stack
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.609
+assigned device:cpu
+out shape:[[1, 169, 3, 4]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.611" [label="type:nndct_sigmoid
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.611
+assigned device:cpu
+out shape:[[1, 169, 3, 20]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.613" [label="type:nndct_elemwise_mul
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.613
+assigned device:cpu
+out shape:[[1, 169, 3, 20]]" color=red]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/r.33" [label="type:nndct_max
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/r.33
+assigned device:dpu
+out shape:[[1, 169, 3], [1, 169, 3]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.615" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.615
+assigned device:dpu
+out shape:[[1, 169, 3, 1]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.617" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.617
+assigned device:dpu
+out shape:[[1, 169, 3, 1]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.619" [label="type:nndct_concat
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.619
+assigned device:dpu
+out shape:[[1, 169, 3, 6]]" color=blue]
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.621" [label="type:nndct_reshape
+name:YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.621
+assigned device:dpu
+out shape:[[1, 507, 6]]" color=blue]
+	"YOLOv3/ret" [label="type:nndct_concat
+name:YOLOv3::YOLOv3/ret
+assigned device:cpu
+out shape:[[1, 10647, 6]]" color=red]
+	return_0 [label="type:nndct_return
+name:YOLOv3::return_0
+assigned device:user
+out shape:[]" color=black]
+	24156 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.457"
+	24158 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.463"
+	24160 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.523"
+	24162 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.529"
+	24164 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.589"
+	24166 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.595"
+	24114 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.455"
+	24115 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.461"
+	24118 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.469"
+	24121 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.475"
+	24131 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.521"
+	24132 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.527"
+	24135 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.535"
+	24138 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.541"
+	24148 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.587"
+	24149 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.593"
+	24152 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.601"
+	24155 -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.607"
+	input_0 -> "YOLOv3/DarkNet53[backbone]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.3"
+	"YOLOv3/DarkNet53[backbone]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.3" -> "YOLOv3/DarkNet53[backbone]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.7"
+	"YOLOv3/DarkNet53[backbone]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.7" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.9"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.9" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.13"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.13" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.15"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.13" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/21095"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.15" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.19"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.19" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.21"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.21" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.25"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.25" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/21095"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block1]/ResBlock[res0]/21095" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.27"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.27" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.31"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.31" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.33"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.31" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/21187"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.33" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.37"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.37" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.39"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.39" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.43"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.43" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/21187"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/21187" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.45"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res0]/21187" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/21249"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.45" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.49"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.49" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.51"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.51" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.55"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.55" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/21249"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block2]/ResBlock[res1]/21249" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.57"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.57" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.61"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.61" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.63"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.61" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/21341"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.63" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.67"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.67" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.69"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.69" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.73"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.73" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/21341"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/21341" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.75"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res0]/21341" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/21403"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.75" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.79"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.79" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.81"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.81" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.85"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.85" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/21403"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/21403" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.87"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res1]/21403" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/21465"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.87" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.91"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.91" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.93"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.93" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.97"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.97" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/21465"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/21465" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.99"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res2]/21465" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/21527"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.99" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.103"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.103" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.105"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.105" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.109"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.109" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/21527"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/21527" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.111"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res3]/21527" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/21589"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.111" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.115"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.115" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.117"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.117" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.121"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.121" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/21589"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/21589" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.123"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res4]/21589" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/21651"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.123" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.127"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.127" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.129"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.129" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.133"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.133" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/21651"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/21651" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.135"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res5]/21651" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/21713"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.135" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.139"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.139" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.141"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.141" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.145"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.145" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/21713"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/21713" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.147"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res6]/21713" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/21775"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.147" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.151"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.151" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.153"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.153" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.157"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.157" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/21775"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/21775" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.159"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block3]/ResBlock[res7]/21775" -> "YOLOv3/FPN[neck]/ret.393"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.159" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.163"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.163" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.165"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.163" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/21867"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.165" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.169"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.169" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.171"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.171" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.175"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.175" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/21867"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/21867" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.177"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res0]/21867" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/21929"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.177" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.181"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.181" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.183"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.183" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.187"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.187" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/21929"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/21929" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.189"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res1]/21929" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/21991"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.189" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.193"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.193" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.195"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.195" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.199"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.199" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/21991"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/21991" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.201"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res2]/21991" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/22053"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.201" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.205"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.205" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.207"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.207" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.211"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.211" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/22053"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/22053" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.213"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res3]/22053" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/22115"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.213" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.217"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.217" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.219"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.219" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.223"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.223" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/22115"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/22115" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.225"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res4]/22115" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/22177"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.225" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.229"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.229" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.231"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.231" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.235"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.235" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/22177"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/22177" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.237"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res5]/22177" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/22239"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.237" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.241"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.241" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.243"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.243" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.247"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.247" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/22239"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/22239" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.249"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res6]/22239" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/22301"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.249" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.253"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.253" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.255"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.255" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.259"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.259" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/22301"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/22301" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.261"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block4]/ResBlock[res7]/22301" -> "YOLOv3/FPN[neck]/ret.353"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.261" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.265"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.265" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.267"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.265" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/22393"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.267" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.271"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.271" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.273"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.273" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.277"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.277" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/22393"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/22393" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.279"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res0]/22393" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/22455"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.279" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.283"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.283" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.285"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.285" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.289"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.289" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/22455"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/22455" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.291"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res1]/22455" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/22517"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.291" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.295"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.295" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.297"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.297" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.301"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.301" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/22517"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/22517" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.303"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res2]/22517" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/22579"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.303" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.307"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.307" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.309"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.309" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.313"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.313" -> "YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/22579"
+	"YOLOv3/DarkNet53[backbone]/Sequential[res_block5]/ResBlock[res3]/22579" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.315"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.315" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.319"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.319" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.321"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.321" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.325"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.325" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.327"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.327" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.331"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.331" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.333"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.333" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.337"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.337" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.339"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.339" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.343"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.343" -> "YOLOv3/FPN[neck]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.345"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown1]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.343" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.557"
+	"YOLOv3/FPN[neck]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.345" -> "YOLOv3/FPN[neck]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.349"
+	"YOLOv3/FPN[neck]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.349" -> "YOLOv3/FPN[neck]/Upsample[upsample]/ret.351"
+	"YOLOv3/FPN[neck]/Upsample[upsample]/ret.351" -> "YOLOv3/FPN[neck]/ret.353"
+	"YOLOv3/FPN[neck]/ret.353" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.355"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.355" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.359"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.359" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.361"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.361" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.365"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.365" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.367"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.367" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.371"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.371" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.373"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.373" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.377"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.377" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.379"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.379" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.383"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.383" -> "YOLOv3/FPN[neck]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.385"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown2]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.383" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.491"
+	"YOLOv3/FPN[neck]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.385" -> "YOLOv3/FPN[neck]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.389"
+	"YOLOv3/FPN[neck]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.389" -> "YOLOv3/FPN[neck]/Upsample[upsample]/ret.391"
+	"YOLOv3/FPN[neck]/Upsample[upsample]/ret.391" -> "YOLOv3/FPN[neck]/ret.393"
+	"YOLOv3/FPN[neck]/ret.393" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.395"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv1]/Sequential[conv]/Conv2d[0]/ret.395" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.399"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv1]/Sequential[conv]/LeakyReLU[2]/ret.399" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.401"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv2]/Sequential[conv]/Conv2d[0]/ret.401" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.405"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv2]/Sequential[conv]/LeakyReLU[2]/ret.405" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.407"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv3]/Sequential[conv]/Conv2d[0]/ret.407" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.411"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv3]/Sequential[conv]/LeakyReLU[2]/ret.411" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.413"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv4]/Sequential[conv]/Conv2d[0]/ret.413" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.417"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv4]/Sequential[conv]/LeakyReLU[2]/ret.417" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.419"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv5]/Sequential[conv]/Conv2d[0]/ret.419" -> "YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.423"
+	"YOLOv3/FPN[neck]/TopDownLayer[topdown3]/Conv[conv5]/Sequential[conv]/LeakyReLU[2]/ret.423" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.425"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.425" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.429"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.429" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv2d[detect]/ret.431"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/Conv2d[detect]/ret.431" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.437"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.437" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.439"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.437" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.443"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.437" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.447"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.437" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.449"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.439" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.441"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.441" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.481"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.443" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.445"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.445" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.451"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.447" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.451"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.449" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.479"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.451" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.453"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.451" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.459"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.451" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.465"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.451" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.471"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.453" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.455"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.455" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.457"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.457" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.477"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.459" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.461"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.461" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.463"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.463" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.477"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.465" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.467"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.467" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.469"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.469" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.477"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.471" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.473"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.473" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.475"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.475" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.477"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.477" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.487"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.479" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.481"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.481" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/r.9"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/r.9" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.483"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/r.9" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.485"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.483" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.487"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.485" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.487"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.487" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.489"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.489" -> "YOLOv3/ret"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.491" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.495"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.495" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv2d[detect]/ret.497"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv2d[detect]/ret.497" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.503"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.503" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.505"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.503" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.509"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.503" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.513"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.503" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.515"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.505" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.507"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.507" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.547"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.509" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.511"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.511" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.517"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.513" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.517"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.515" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.545"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.517" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.519"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.517" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.525"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.517" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.531"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.517" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.537"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.519" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.521"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.521" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.523"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.523" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.543"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.525" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.527"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.527" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.529"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.529" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.543"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.531" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.533"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.533" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.535"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.535" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.543"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.537" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.539"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.539" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.541"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.541" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.543"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.543" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.553"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.545" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.547"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.547" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/r.21"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/r.21" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.549"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/r.21" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.551"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.549" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.553"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.551" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.553"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.553" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.555"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.555" -> "YOLOv3/ret"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv[conv]/Sequential[conv]/Conv2d[0]/ret.557" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.561"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.561" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv2d[detect]/ret.563"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv2d[detect]/ret.563" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.569"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.569" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.571"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.569" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.575"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.569" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.579"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.569" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.581"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.571" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.573"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.573" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.613"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.575" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.577"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.577" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.583"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.579" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.583"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.581" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.611"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.583" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.585"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.583" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.591"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.583" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.597"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.583" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.603"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.585" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.587"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.587" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.589"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.589" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.609"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.591" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.593"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.593" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.595"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.595" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.609"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.597" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.599"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.599" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.601"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.601" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.609"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.603" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.605"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.605" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.607"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.607" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.609"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.609" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.619"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.611" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.613"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.613" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/r.33"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/r.33" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.615"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/r.33" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.617"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.615" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.619"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.617" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.619"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.619" -> "YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.621"
+	"YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.621" -> "YOLOv3/ret"
+	"YOLOv3/ret" -> return_0
+}

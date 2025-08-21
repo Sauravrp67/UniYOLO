@@ -156,7 +156,7 @@ image_path = '/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_
 
 image = cv2.imread(image_path)
 
-val_dataset = Dataset('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/data/voc.yaml',phase = 'val')
+val_dataset = Dataset('/workspace/data/voc.yaml',phase = 'val')
 
 transform = BasicTransform(input_size = 416)
 val_dataset.load_transformer(transformer = transform)
