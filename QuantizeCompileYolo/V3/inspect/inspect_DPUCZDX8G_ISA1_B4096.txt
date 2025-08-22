@@ -162,7 +162,7 @@ YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.473                     
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.475                                                                 nndct_elemwise_mul   xir::Op{name = YOLOv3__YOLOv3_YoloHead_head__DetectLayer_detect_s__ret_475_new, type = eltwise-fix} has been assigned to CPU: [DPU only supports positive "input_channel"(0)].
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.477                                                                 nndct_stack          nndct_stack can't be converted to XIR.
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.479                                                                 nndct_sigmoid        nndct_sigmoid can't be assigned to DPU.
-YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.481                                                                 nndct_elemwise_mul   Try to assign nndct_elemwise_mul_ckKMBzIxjwAEGNDl to DPU failed.
+YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_s]/ret.481                                                                 nndct_elemwise_mul   Try to assign nndct_elemwise_mul_WOagJFYcB4fCnsZi to DPU failed.
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.495                        nndct_leaky_relu     xir::Op{name = YOLOv3__YOLOv3_YoloHead_head__DetectLayer_detect_m__Conv_conv__Sequential_conv__Conv2d_0__ret_491, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.100000, but DPU only support 0.1015625.].
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.505                                                                 nndct_strided_slice  nndct_strided_slice can't be assigned to DPU.
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.507                                                                 nndct_sigmoid        nndct_sigmoid can't be assigned to DPU.
@@ -185,7 +185,7 @@ YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.539                     
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.541                                                                 nndct_elemwise_mul   xir::Op{name = YOLOv3__YOLOv3_YoloHead_head__DetectLayer_detect_m__ret_541_new, type = eltwise-fix} has been assigned to CPU: [DPU only supports positive "input_channel"(0)].
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.543                                                                 nndct_stack          nndct_stack can't be converted to XIR.
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.545                                                                 nndct_sigmoid        nndct_sigmoid can't be assigned to DPU.
-YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.547                                                                 nndct_elemwise_mul   Try to assign nndct_elemwise_mul_x4gXJl6IGRnCaPYs to DPU failed.
+YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_m]/ret.547                                                                 nndct_elemwise_mul   Try to assign nndct_elemwise_mul_NFVfkPTXv70sCp68 to DPU failed.
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/Conv[conv]/Sequential[conv]/LeakyReLU[2]/ret.561                        nndct_leaky_relu     xir::Op{name = YOLOv3__YOLOv3_YoloHead_head__DetectLayer_detect_l__Conv_conv__Sequential_conv__Conv2d_0__ret_557, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.100000, but DPU only support 0.1015625.].
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.571                                                                 nndct_strided_slice  nndct_strided_slice can't be assigned to DPU.
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.573                                                                 nndct_sigmoid        nndct_sigmoid can't be assigned to DPU.
@@ -208,7 +208,7 @@ YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.605                     
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.607                                                                 nndct_elemwise_mul   xir::Op{name = YOLOv3__YOLOv3_YoloHead_head__DetectLayer_detect_l__ret_607_new, type = eltwise-fix} has been assigned to CPU: [DPU only supports positive "input_channel"(0)].
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.609                                                                 nndct_stack          nndct_stack can't be converted to XIR.
 YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.611                                                                 nndct_sigmoid        nndct_sigmoid can't be assigned to DPU.
-YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.613                                                                 nndct_elemwise_mul   Try to assign nndct_elemwise_mul_3uBvt2U1zcSCk8l5 to DPU failed.
+YOLOv3::YOLOv3/YoloHead[head]/DetectLayer[detect_l]/ret.613                                                                 nndct_elemwise_mul   Try to assign nndct_elemwise_mul_qrRfJcG1whBEKmYS to DPU failed.
 YOLOv3::YOLOv3/ret                                                                                                          nndct_concat         xir::Op{name = YOLOv3__YOLOv3_ret, type = concat-fix} has been assigned to CPU: [it has one input is not from DPU.].
 ================================================================================================================================================================
 graph name: YOLOv3
@@ -11828,7 +11828,7 @@ op type: nndct_elemwise_mul
 outputs shape: [1, 2704, 3, 20]
 op attributes:
 assigned device: cpu
-hardware constraints: Try to assign nndct_elemwise_mul_ckKMBzIxjwAEGNDl to DPU failed.
+hardware constraints: Try to assign nndct_elemwise_mul_WOagJFYcB4fCnsZi to DPU failed.
 source range:
 /opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/torch/_tensor.py(1279): __torch_function__
 /opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/pytorch_nndct/parse/override_torch_function.py(52): __torch_function__
@@ -13166,7 +13166,7 @@ op type: nndct_elemwise_mul
 outputs shape: [1, 676, 3, 20]
 op attributes:
 assigned device: cpu
-hardware constraints: Try to assign nndct_elemwise_mul_x4gXJl6IGRnCaPYs to DPU failed.
+hardware constraints: Try to assign nndct_elemwise_mul_NFVfkPTXv70sCp68 to DPU failed.
 source range:
 /opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/torch/_tensor.py(1279): __torch_function__
 /opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/pytorch_nndct/parse/override_torch_function.py(52): __torch_function__
@@ -14504,7 +14504,7 @@ op type: nndct_elemwise_mul
 outputs shape: [1, 169, 3, 20]
 op attributes:
 assigned device: cpu
-hardware constraints: Try to assign nndct_elemwise_mul_3uBvt2U1zcSCk8l5 to DPU failed.
+hardware constraints: Try to assign nndct_elemwise_mul_qrRfJcG1whBEKmYS to DPU failed.
 source range:
 /opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/torch/_tensor.py(1279): __torch_function__
 /opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/pytorch_nndct/parse/override_torch_function.py(52): __torch_function__

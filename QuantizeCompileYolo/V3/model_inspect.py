@@ -36,7 +36,7 @@ target = "DPUCZDX8G_ISA1_B4096"
 inspector = Inspector(target)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-inspector.inspect(model,(dummy_input,),device = device,output_dir = "./inspect",verbose_level = 2,image_format = "png")
+inspector.inspect(model,(dummy_input,),device = device,output_dir = "./inspect",verbose_level = 1,image_format = "png")
 
 
 
