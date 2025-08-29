@@ -1,13 +1,12 @@
-import cv2
-import torch
 import numpy as np
 from collections import namedtuple
 from augmentations import *
-from utils import SampleProvider
+from augmentations.sampler import SampleProvider
 
 
 MEAN = 0.485, 0.456, 0.406 # RGB
 STD = 0.229, 0.224, 0.225 # RGB
+
 
 class SelectOne:
     """

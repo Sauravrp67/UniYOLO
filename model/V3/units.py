@@ -10,7 +10,7 @@ class Conv(nn.Module):
         elif act == "relu":
             act_func = nn.ReLU()
         elif act == "leaky_relu":
-            act_func = nn.LeakyReLU(0.1)
+            act_func = nn.LeakyReLU(0.1015625)
         self.conv = nn.Sequential(
             nn.Conv2d(in_channels,out_channels,kernel_size = kernel_size,stride = stride,padding = padding,dilation = dilation,bias = False),
             nn.BatchNorm2d(out_channels),

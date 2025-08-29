@@ -8,9 +8,6 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
-from utils import set_grid
-
-
 
 class YOLOv3Loss():
     def __init__(self, input_size, num_classes, anchors):
@@ -75,9 +72,13 @@ class YOLOv3Loss():
         self.grid_size, self.grid_x, self.grid_y = [], [], []
         for stride in [8, 16, 32]:
             self.grid_size.append(input_size // stride)
-            grid_x, grid_y = set_grid(grid_size=input_size // stride)
+            grid_x, grid_y = self.set_grid(grid_size=input_size // stride)
             self.grid_x.append(grid_x.contiguous().view((1, -1, 1)))
             self.grid_y.append(grid_y.contiguous().view((1, -1, 1)))
+
+    def set_grid(self,grid_size):
+        grid_y,grid_x = torch.meshgrid((torch.arange(grid_size),torch.arange(grid_size)),indexing="ij")
+        return (grid_x,grid_y)
 
 
     def calculate_iou_target_with_anchors(self, target_wh, anchor_wh):

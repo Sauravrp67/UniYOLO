@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
-from model import YOLOv3
+from model import YOLOv3,YOLOv3_DPU
 
 anchors = [[0.248,      0.7237237 ],
     [0.36144578, 0.53      ],
@@ -28,15 +28,15 @@ anchors = [[0.248,      0.7237237 ],
     [0.944,      0.5733333 ]]
 
 
-model = YOLOv3(input_size = 416,num_classes = 20,anchors = anchors,model_type = "base")
+model = YOLOv3_DPU(input_size = 416,num_classes = 20,anchors = anchors,model_type = "base")
 
 dummy_input = torch.randn(1,3,416,416)
-target = "DPUCZDX8G_ISA1_B4096"
+target = "0x101000056010407"
 
 inspector = Inspector(target)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-inspector.inspect(model,(dummy_input,),device = device,output_dir = "./inspect",verbose_level = 1,image_format = "png")
+inspector.inspect(model,(dummy_input,),device = device,output_dir = "./inspect",verbose_level = 2,image_format = "png")
 
 
 

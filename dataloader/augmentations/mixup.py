@@ -2,7 +2,7 @@
 import numpy as np
 import cv2
 from typing import Optional, Tuple
-from utils import SampleProvider
+from sampler import SampleProvider
 
 # class MixUpProvider:
 #     """

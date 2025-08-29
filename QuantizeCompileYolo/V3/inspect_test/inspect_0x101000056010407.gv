@@ -1,0 +1,21 @@
+digraph DummyModel {
+	input_0 [label="type:nndct_input
+name:DummyModel::input_0
+assigned device:user
+out shape:[[1, 169, 3]]" color=black]
+	"DummyModel/Reshape[reshape]/ret.3" [label="type:nndct_reshape
+name:DummyModel::DummyModel/Reshape[reshape]/ret.3
+assigned device:cpu
+out shape:[[1, 13, 13, 3]]" color=red]
+	"DummyModel/ret" [label="type:nndct_elemwise_add
+name:DummyModel::DummyModel/ret
+assigned device:dpu
+out shape:[[1, 13, 13, 3]]" color=blue]
+	return_0 [label="type:nndct_return
+name:DummyModel::return_0
+assigned device:user
+out shape:[]" color=black]
+	input_0 -> "DummyModel/Reshape[reshape]/ret.3"
+	"DummyModel/Reshape[reshape]/ret.3" -> "DummyModel/ret"
+	"DummyModel/ret" -> return_0
+}

@@ -9,9 +9,8 @@ if str(ROOT) not in sys.path:
 import numpy as np
 import cv2
 from typing import Optional,Tuple
-from utils import scale_to_original,transform_xcycwh_to_x1y1x2y2,SampleProvider
 
-
+from sampler import SampleProvider
 
 def _clip_xyxy(boxes: np.ndarray, W: int, H: int) -> np.ndarray:
     if len(boxes) == 0:

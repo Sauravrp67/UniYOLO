@@ -1,0 +1,107 @@
+2025-08-22 16:34:52 | [Arguments]
+{'batch_size': 4,
+ 'ckpt_name': '/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt',
+ 'ckpt_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt'),
+ 'conf_thres': 0.3,
+ 'data': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/data/voc.yaml'),
+ 'exp': 'cpu_val',
+ 'exp_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val'),
+ 'img_interval': 10,
+ 'img_log_dir': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val/val-image'),
+ 'img_size': 416,
+ 'nms_thres': 0.6,
+ 'rank': 0,
+ 'save_result': False,
+ 'workers': 1}
+
+2025-08-22 16:36:17 | [Arguments]
+{'batch_size': 4,
+ 'ckpt_name': '/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt',
+ 'ckpt_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt'),
+ 'conf_thres': 0.3,
+ 'data': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/data/voc.yaml'),
+ 'exp': 'cpu_val',
+ 'exp_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val'),
+ 'img_interval': 10,
+ 'img_log_dir': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val/val-image'),
+ 'img_size': 416,
+ 'nms_thres': 0.6,
+ 'rank': 0,
+ 'save_result': False,
+ 'workers': 1}
+
+2025-08-22 16:37:53 | [Arguments]
+{'batch_size': 4,
+ 'ckpt_name': '/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt',
+ 'ckpt_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt'),
+ 'conf_thres': 0.3,
+ 'data': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/data/voc.yaml'),
+ 'exp': 'cpu_val',
+ 'exp_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val'),
+ 'img_interval': 10,
+ 'img_log_dir': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val/val-image'),
+ 'img_size': 416,
+ 'nms_thres': 0.6,
+ 'rank': 0,
+ 'save_result': False,
+ 'workers': 1}
+
+2025-08-22 16:39:29 | [Arguments]
+{'batch_size': 4,
+ 'ckpt_name': '/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt',
+ 'ckpt_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt'),
+ 'conf_thres': 0.3,
+ 'data': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/data/voc.yaml'),
+ 'exp': 'cpu_val',
+ 'exp_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val'),
+ 'img_interval': 10,
+ 'img_log_dir': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val/val-image'),
+ 'img_size': 416,
+ 'nms_thres': 0.6,
+ 'rank': 0,
+ 'save_result': False,
+ 'workers': 1}
+
+2025-08-22 16:40:30 | [Arguments]
+{'batch_size': 4,
+ 'ckpt_name': '/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt',
+ 'ckpt_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt'),
+ 'conf_thres': 0.3,
+ 'data': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/data/voc.yaml'),
+ 'exp': 'cpu_val',
+ 'exp_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val'),
+ 'img_interval': 10,
+ 'img_log_dir': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val/val-image'),
+ 'img_size': 416,
+ 'nms_thres': 0.6,
+ 'rank': 0,
+ 'save_result': False,
+ 'workers': 1}
+
+2025-08-22 16:48:05 | [Arguments]
+{'batch_size': 4,
+ 'ckpt_name': '/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt',
+ 'ckpt_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt'),
+ 'conf_thres': 0.3,
+ 'data': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/data/voc.yaml'),
+ 'exp': 'cpu_val',
+ 'exp_path': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val'),
+ 'img_interval': 10,
+ 'img_log_dir': PosixPath('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/experiment/cpu_val/val-image'),
+ 'img_size': 416,
+ 'nms_thres': 0.6,
+ 'rank': 0,
+ 'save_result': False,
+ 'workers': 1}
+
+2025-08-22 16:52:44 | [Validation Result]
+	 - Average Precision (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.034
+	 - Average Precision (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.060
+	 - Average Precision (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.035
+	 - Average Precision (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.003
+	 - Average Precision (AP) @[ IoU=0.50      | area= small | maxDets=100 ] = 0.009
+	 - Average Precision (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.030
+	 - Average Precision (AP) @[ IoU=0.50      | area=medium | maxDets=100 ] = 0.058
+	 - Average Precision (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.032
+	 - Average Precision (AP) @[ IoU=0.50      | area= large | maxDets=100 ] = 0.050
+

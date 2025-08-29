@@ -121,7 +121,7 @@ def image_preprocess(image:np.ndarray,tf):
     return input_image,input_image_np
 
 
-def post_process(image_letterboxed:np.ndarray,image_original:np.ndarray,predictions:np.ndarray,tf:UnletterBox,letterboxed:bool = False):
+def post_process(image_letterboxed:np.ndarray,image_original_shape:tuple,predictions:np.ndarray,tf:UnletterBox,letterboxed:bool = False):
     predictions[:,1:5] = transform_xcycwh_to_x1y1x2y2(boxes = predictions[:,1:5],clip_max = 1.0)
     predictions = filter_confidence(predictions,conf_threshold=0.15)
     predictions = run_NMS(predictions,iou_threshold=0.5)
@@ -132,7 +132,7 @@ def post_process(image_letterboxed:np.ndarray,image_original:np.ndarray,predicti
         image_out = image_letterboxed
     else:
         boxes = transform_x1y1x2y2_to_xcycwh(predictions[:,1:5]).copy()
-        image_transformed,boxes,_ = tf(image_letterboxed,boxes = boxes,labels = None,orig_shape=(image_original.shape[0],image_original.shape[1]))
+        image_transformed,boxes,_ = tf(image_letterboxed,boxes = boxes,labels = None,orig_shape=(image_original_shape[0],image_original_shape[1]))
         boxes = transform_xcycwh_to_x1y1x2y2(boxes,clip_max=1.0)
         boxes = scale_to_original(boxes,scale_w = image_transformed.shape[1],scale_h = image_transformed.shape[0])
         image_out = image_transformed
@@ -152,20 +152,20 @@ anchors = [[0.248,      0.7237237 ],
         [0.8605263,  0.8736842 ],
         [0.944,      0.5733333 ]]
 
-image_path = '/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/Data/VOC/images/val2007/000169.jpg'
 
-image = cv2.imread(image_path)
-
-val_dataset = Dataset('/workspace/data/voc.yaml',phase = 'val')
+val_dataset = Dataset('/workspace/data/voc_vitis.yaml',phase = 'val')
 
 transform = BasicTransform(input_size = 416)
 val_dataset.load_transformer(transformer = transform)
-val_loader = DataLoader(val_dataset,batch_size = 1,shuffle = True,num_workers = 1,collate_fn = Dataset.collate_fn,pin_memory = True,)
+val_loader = DataLoader(val_dataset,batch_size = 8,shuffle = True,num_workers = 1,collate_fn = Dataset.collate_fn,pin_memory = True,)
 
 minibatch = next(iter(val_loader))
 
 input_image = minibatch[1]
+shape = minibatch[-1]
 
+print(input_image.shape)
+print(shape)
 # input_image,input_image_np = image_preprocess(image,transform)
 
 input_size = 416
@@ -182,11 +182,10 @@ print(f"Model processing time{time.time() - start_time}")
 
 unletterboxing = UnletterBox(new_shape = (416,416))
 
-for image_tensor,predictions in zip(input_image,predictions):
+for image_tensor,predictions,original_shape in zip(input_image,predictions,shape):
     
     input_image_np = to_image(image_tensor)
-    print(input_image_np)
-    image,boxes,label,conf = post_process(input_image_np,image_original=image,predictions = predictions.numpy(),tf = unletterboxing,letterboxed=False)
+    image,boxes,label,conf = post_process(input_image_np,image_original_shape=original_shape,predictions = predictions.numpy(),tf = unletterboxing,letterboxed=False)
     img = visualize_image(image = image,boxes = boxes,labels = label)
     cv2.imshow("Prediction",img)
     cv2.waitKey(0)

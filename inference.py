@@ -8,33 +8,72 @@ import torch
 from utils import denormalize,to_tensor,transform_xcycwh_to_x1y1x2y2,filter_confidence,run_NMS,transform_x1y1x2y2_to_xcycwh,scale_to_original,to_image
 import numpy as np
 from dataloader import BasicTransform,UnletterBox
+from VainF_pruning import to_channels_last_safe
 # -------------------------------------------------------------------
 # Import YOLO model families
 # You can extend this with more (V4, V5, V6...) under model/
 # -------------------------------------------------------------------
-from model import YOLOv3
+from model import YOLOv3,YOLOv3_DPU,BoxDecoder
 # from model.V4.yolo import YOLOv4
 # from model.V5.yolo import YOLOv5
 
 
-def load_model(version: str, pretrained:bool, device: str,input_size: int, num_classes: int,model_type: str,anchors):
+def memfmt(t):
+    if t.is_contiguous(memory_format=torch.channels_last):
+        return "channels_last"
+    if t.is_contiguous():
+        return "contiguous (NCHW)"
+    return f"non-contiguous, strides={t.stride()}"
+
+# def load_model(version: str, pretrained:bool, device: str,input_size: int, num_classes: int,model_type: str,anchors):
+#     """
+#     Initialize YOLO model and load checkpoint.
+#     """
+#     if version.upper() == "V3":
+#         model = YOLOv3(input_size = input_size, num_classes = num_classes, anchors = anchors, model_type = model_type, pretrained = False).to(device)
+#         # model = torch.load("/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/torch_pruning/pruned_models/yolov3_pruned_full.pt",map_location = "cpu",weights_only = False)
+#         # model = torch.jit.load('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/VainF_pruning/torchscript/yolo_unpruned_scripted.pt')
+#         # model = to_channels_last_safe(model=model)
+#         # model = torch.jit.optimize_for_inference(model)
+#         # x = torch.randn(1,3,416,416).to(memory_format=torch.channels_last)
+#         # y = model(x)
+#         # print("Output:", memfmt(y))
+#         ckpt = torch.load('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt',map_location = 'cpu',weights_only = False)
+#         sd = ckpt["model_state"] if "model_state" in ckpt else ckpt
+#         missing,unexpected = model.load_state_dict(sd,strict = True)
+#         print(f"[load] missing = {len(missing)} unexpected = {len(unexpected)}")
+#     elif version.upper() == "V3_DPU":
+#         model = YOLOv3_DPU(input_size = input_size, num_classes = num_classes, anchors = anchors, model_type = model_type, pretrained = False).to(device)
+#         ckpt = torch.load('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt',map_location = 'cpu',weights_only = False)
+#         sd = ckpt["model_state"] if "model_state" in ckpt else ckpt
+#         missing,unexpected = model.load_state_dict(sd,strict = True)
+#         print(f"[load] missing = {len(missing)} unexpected = {len(unexpected)}")
+   
+#     # elif version.upper() == "V5":
+#     #     from model.V5.yolo import YOLOv5
+#     #     model = YOLOv5()
+#     else:
+#         raise ValueError(f"Unsupported model version: {version}")
+
+#     model.to(device).eval()
+#     model.zero_grad()
+#     # model.set_grid_xy(input_size = input_size)
+#     return model
+
+def load_model(version,pretrained,device: str,input_size: int, num_classes: int,model_type: str,anchors):
     """
     Initialize YOLO model and load checkpoint.
     """
-    if version.upper() == "V3":
-        model = YOLOv3(input_size = input_size, num_classes = num_classes, anchors = anchors, model_type = model_type, pretrained = True).to(device)
-    # elif version.upper() == "V4":
-    #     from model.V4.yolo import YOLOv4
-    #     model = YOLOv4()
-    # elif version.upper() == "V5":
-    #     from model.V5.yolo import YOLOv5
-    #     model = YOLOv5()
-    else:
-        raise ValueError(f"Unsupported model version: {version}")
-
+   
+    
+    model = YOLOv3_DPU(input_size = input_size, num_classes = num_classes, anchors = anchors, model_type = model_type, pretrained = False).to(device)
+    ckpt = torch.load('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt',map_location = 'cpu',weights_only = False)
+    sd = ckpt["model_state"] if "model_state" in ckpt else ckpt
+    missing,unexpected = model.load_state_dict(sd,strict = True)
+    print(f"[load] missing = {len(missing)} unexpected = {len(unexpected)}")
     model.to(device).eval()
     model.zero_grad()
-    model.set_grid_xy(input_size = input_size)
+    # model.set_grid_xy(input_size = input_size)
     return model
 
 
@@ -51,7 +90,7 @@ def post_process(image_letterboxed:np.ndarray,image_original:np.ndarray,predicti
     predictions[:,1:5] = transform_xcycwh_to_x1y1x2y2(boxes = predictions[:,1:5],clip_max = 1.0)
     predictions = filter_confidence(predictions,conf_threshold=conf_thresh)
     predictions = run_NMS(predictions,iou_threshold=nms_iou_thresh)
-
+    
     boxes = predictions[:,1:5].copy()
     if letterboxed:
         boxes *= image_letterboxed.shape[0]
@@ -66,7 +105,6 @@ def post_process(image_letterboxed:np.ndarray,image_original:np.ndarray,predicti
     conf = predictions[:,-1]
 
     return image_out,boxes,label,conf
-
 
 CLASS_INFO = {
     0:'aeroplane',1:'bicycle',2:'bird',3:'boat',4:'bottle',5:'bus',6:'car',7:'cat',
@@ -89,7 +127,8 @@ def draw_dets(img, boxes_xyxy, labels, conf):
     return img
 
 
-def run_inference(model, device, source, input_size, conf_thresh, nms_iou_thresh):
+def run_inference(model,model_version, device, source, input_size, conf_thresh, nms_iou_thresh):
+    model.eval()
     tf_pre  = BasicTransform(input_size=input_size)
     tf_unlb = UnletterBox(new_shape=input_size)
 
@@ -97,9 +136,10 @@ def run_inference(model, device, source, input_size, conf_thresh, nms_iou_thresh
     if Path(source).suffix.lower() in [".jpg", ".png", ".jpeg", ".bmp"]:
         img = cv2.imread(source)
         t0 = time.time()
-        image_tensor = preprocess(img, tf=tf_pre).to(device)
+        image_tensor = preprocess(img, tf=tf_pre).to(device=device,memory_format=torch.channels_last)
+        print(image_tensor.is_contiguous(memory_format=torch.channels_last))
         preds = model(image_tensor)
-        image_np = to_image(image_tensor)  # letterboxed canvas as numpy (H,W,C)
+        image_np = to_image(image_tensor) # letterboxed canvas as numpy (H,W,C)
         image_out, boxes, labels, conf = post_process(
             image_np, img, predictions=preds.detach().cpu().numpy(),
             tf=tf_unlb, conf_thresh=conf_thresh, nms_iou_thresh=nms_iou_thresh,letterboxed=False
@@ -122,8 +162,14 @@ def run_inference(model, device, source, input_size, conf_thresh, nms_iou_thresh
         if not ret:
             break
         t0 = time.time()
-        image_tensor = preprocess(frame, tf=tf_pre).to(device)
+        image_tensor = preprocess(frame, tf=tf_pre).to(device).to(device=device,memory_format=torch.channels_last)        
         preds = model(image_tensor)
+        if model_version == "V3_DPU":
+            print(preds[0].shape)
+            decoded_52 = BoxDecoder(preds[0],model.anchors[0:3]).decode_predictions()
+            decoded_26 = BoxDecoder(preds[1],model.anchors[3:6]).decode_predictions()
+            decoded_13 = BoxDecoder(preds[2],model.anchors[6:9]).decode_predictions()
+            preds = torch.cat((decoded_52,decoded_26,decoded_13),dim = 1)
         image_np = to_image(image_tensor.squeeze(0))
         image_out, boxes, labels, conf = post_process(
             image_np, frame, predictions=preds.squeeze(0).detach().numpy(),
@@ -131,10 +177,10 @@ def run_inference(model, device, source, input_size, conf_thresh, nms_iou_thresh
         )
         fps = 1.0 / (time.time() - t0)
         names = id2name(labels) if labels is not None and len(labels) else []
-        print(f"FPS: {fps:.2f} | labels: {', '.join(sorted(set(names)))}" if names else f"FPS: {fps:.2f} | labels: none")
+        # print(f"FPS: {fps:.2f} | labels: {', '.join(sorted(set(names)))}" if names else f"FPS: {fps:.2f} | labels: none")
         start_time = time.time()
         vis = draw_dets(image_out, boxes, labels, conf)
-        print(f"Drawing:{time.time() - start_time}")
+        # print(f"Drawing:{time.time() - start_time}")
         cv2.putText(vis, f"FPS: {fps:.2f}", (10, 30),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         cv2.imshow("Prediction", vis)
@@ -150,7 +196,7 @@ def run_inference(model, device, source, input_size, conf_thresh, nms_iou_thresh
 # -------------------------------------------------------------------
 def parse_args():
     parser = argparse.ArgumentParser("YOLO Inference")
-    parser.add_argument("--pretrained", type=bool, required=True,
+    parser.add_argument("--pretrained", type=bool, required=False,
                         help="Path to .pt checkpoint")
     parser.add_argument("--source", type=str, required=True,
                         help="Source: image.jpg | video.mp4 | webcam")
@@ -179,7 +225,7 @@ def main():
           [0.8605263,  0.8736842 ],
           [0.944,      0.5733333 ]]
     model = load_model(args.model_version,pretrained = args.pretrained,device = args.device,input_size = args.input_size,num_classes = 20, model_type = 'base',anchors = anchors)
-    run_inference(model, args.device, args.source, args.input_size, args.conf_thresh,args.nms_iou_thresh)
+    run_inference(model,args.model_version, args.device, args.source, args.input_size, args.conf_thresh,args.nms_iou_thresh)
 
 
 if __name__ == "__main__":

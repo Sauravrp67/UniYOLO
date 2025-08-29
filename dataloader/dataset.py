@@ -36,8 +36,8 @@ class Dataset:
 
         self.mAP_filepath = None
 
-        if phase == "val":
-            self.generate_mAP_source(save_dir = Path("./data/eval_src"),mAP_filename = self.data_item["VAL_FILE"])
+        # if phase == "val":
+        #     self.generate_mAP_source(save_dir = Path("./data/eval_src"),mAP_filename = self.data_item["VAL_FILE"])
 
     def __len__(self):return len(self.image_paths)
 
@@ -86,10 +86,13 @@ class Dataset:
                 f = open(str(label_path), mode="w")
                 f.close()
 
-    def generate_mAP_source(self,save_dir,mAP_filename):
+    def generate_mAP_source(self,save_dir,mAP_filename,indices = None):
         if not save_dir.is_dir():
             os.makedirs(save_dir,exist_ok = True)
         self.mAP_filepath = save_dir / mAP_filename
+
+        if indices is None:
+            indices = list(range(len(self)))
 
         if not self.mAP_filepath.is_file():
             class_id2category = self.class_list
@@ -101,7 +104,7 @@ class Dataset:
             mAP_file_formatter["categories"] = []
 
             lbl_id = 0
-            for i in tqdm(range(len(self))):
+            for i in tqdm(indices):
                 filename,image,label = self.get_GT_item(i)
                 img_h,img_w = image.shape[:2]
                 mAP_file_formatter["imageToid"][filename] = i

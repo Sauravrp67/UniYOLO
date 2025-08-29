@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 from typing import Optional,Tuple,Sequence
-from utils import scale_to_original,transform_xcycwh_to_x1y1x2y2,clip_xyxy,SampleProvider
+from sampler import clip_xyxy,SampleProvider
 
 
 

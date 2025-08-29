@@ -5,9 +5,7 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from pytorch_nndct import get_pruning_runner
 
-# ----------------------------
-# 1) Tiny Sequential Conv Net
-# ----------------------------
+
 class TinyConvNet(nn.Module):
     def __init__(self, num_classes=10):
         super().__init__()
@@ -29,9 +27,7 @@ class TinyConvNet(nn.Module):
         x = x.flatten(1)
         return self.classifier(x)
 
-# -----------------------------------------
-# 2) Tiny random dataset for search/calib
-# -----------------------------------------
+
 class RandomDataset(Dataset):
     def __init__(self, n=256, num_classes=10, img_size=64):
         self.n = n
@@ -45,7 +41,6 @@ class RandomDataset(Dataset):
         return x, y
 
 def tiny_calib_fn(model, loader, number_forward=64):
-    """Run a few forward passes (no grad) to let BN adapt; used during search."""
     model.train()
     with torch.no_grad():
         for i, (x, _) in enumerate(loader):
@@ -55,7 +50,6 @@ def tiny_calib_fn(model, loader, number_forward=64):
                 break
 
 def tiny_eval_fn(model, loader):
-    """Return a scalar score; search just needs any monotonic metric."""
     model.eval()
     score = 0.0
     with torch.no_grad():
@@ -65,35 +59,26 @@ def tiny_eval_fn(model, loader):
             score += 1.0
             if i >= 10:
                 break
-    # Return tensor/float; pruning runner accepts both
     return torch.tensor(score, device=next(model.parameters()).device)
 
-# ----------------------------
-# 3) Wire everything together
-# ----------------------------
+
 if __name__ == "__main__":
-    # Make sure working dir exists for .vai artifacts
     os.makedirs(".vai", exist_ok=True)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = TinyConvNet(num_classes=10).to(device).train()
 
-    # Dummy input signature for graph tracing
     input_signature = torch.randn(1, 3, 64, 64, device=device)
 
-    # Build pruning runner (one_step so we can search then slim-prune)
     pruning_runner = get_pruning_runner(model, input_signature, method="one_step")
 
-    # Small random loaders for search/calibration
     train_loader = DataLoader(RandomDataset(n=256), batch_size=32, shuffle=True)
     eval_loader  = DataLoader(RandomDataset(n=64),  batch_size=32, shuffle=False)
 
-    # -------------------------
-    # 3a) SEARCH (required for slim)
-    # -------------------------
-    removal_ratio = 0.5       # prune ~50% channels
-    channel_divisible = 2     # keep channels divisible by 2
-    num_subnet = 8            # quick search
+
+    removal_ratio = 0.5      
+    channel_divisible = 2     
+    num_subnet = 8            
 
     pruning_runner.search(
         gpus=[0] if torch.cuda.is_available() else [],
@@ -109,15 +94,14 @@ if __name__ == "__main__":
     slim_model = pruning_runner.prune(
         removal_ratio=removal_ratio,
         mode="slim",
-        index=None,                   # let runner pick best subnet
+        index=None,                   
         channel_divisible=channel_divisible
     ).to(device)
 
-    # Sanity forward
     slim_model.train()
     x = torch.randn(4, 3, 64, 64, device=device)
     out = slim_model(x)
-    print("Sanity output shape:", tuple(out.shape))  # expect [4, 10]
+    print("Sanity output shape:", tuple(out.shape))  
 
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(slim_model.parameters(), lr=1e-3, momentum=0.9)

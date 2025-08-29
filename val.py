@@ -9,7 +9,7 @@ from datetime import datetime
 import torch
 import numpy as np
 from tqdm import tqdm
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader,Subset
 
 ROOT = Path(__file__).resolve().parents[0]
 TIMESTAMP = datetime.today().strftime("%Y-%m-%d_%H-%M")
@@ -37,7 +37,8 @@ def validate(args, dataloader, model, evaluator, epoch=0, save_result=False):
 
     for _, minibatch in enumerate(dataloader):
         filenames, images, shapes = minibatch[0], minibatch[1], minibatch[3]
-        predictions = model(images.cuda(args.rank, non_blocking=True))
+        predictions = model(images.to("cpu"))
+        # cuda(args.rank, non_blocking=True)
 
         for j in range(len(filenames)):
             prediction = predictions[j].cpu().numpy()
@@ -126,17 +127,23 @@ def main():
     logger = build_basic_logger(args.exp_path / "val.log", set_level=1)
     logger.info(f"[Arguments]\n{pprint.pformat(vars(args))}\n")
 
+
     val_dataset = Dataset(yaml_path=args.data, phase="val")
+    k = 500
     val_transformer = BasicTransform(input_size=args.img_size)
     val_dataset.load_transformer(transformer=val_transformer)
-    val_loader = DataLoader(dataset=val_dataset, collate_fn=Dataset.collate_fn, batch_size=args.batch_size, shuffle=False, pin_memory=True, num_workers=args.workers)
+    subset_idx = list(range(min(k,len(val_dataset))))
+    val_subset = Subset(val_dataset,subset_idx)
+    
+    val_loader = DataLoader(dataset=val_subset, collate_fn=Dataset.collate_fn, batch_size=args.batch_size, shuffle=False, pin_memory=True, num_workers=args.workers)
 
-    ckpt = torch.load(args.ckpt_path, map_location = {"cpu":"cuda:%d" %args.rank})
+    ckpt = torch.load(args.ckpt_path, map_location = "cpu")
+    # {"cpu":"cuda:%d" %args.rank}
     args.class_list = ckpt["class_list"]
     args.color_list = generate_random_color(len(args.class_list))
     args.mAP_filepath = val_dataset.mAP_filepath
     
-    model = YOLOv3(input_size=args.img_size, num_classes=len(args.class_list), anchors=ckpt["anchors"], model_type=ckpt["model_type"]).cuda(args.rank)
+    model = YOLOv3(input_size=args.img_size, num_classes=len(args.class_list), anchors=ckpt["anchors"], model_type=ckpt["model_type"]).to("cpu")
     model.load_state_dict(ckpt["ema_state" if ckpt.get("ema_state") else "model_state"], strict=True)
     evaluator = Evaluator(annotation_file=args.mAP_filepath)
 
