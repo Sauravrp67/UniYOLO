@@ -8,7 +8,10 @@ import torch
 from utils import denormalize,to_tensor,transform_xcycwh_to_x1y1x2y2,filter_confidence,run_NMS,transform_x1y1x2y2_to_xcycwh,scale_to_original,to_image
 import numpy as np
 from dataloader import BasicTransform,UnletterBox
-from VainF_pruning import to_channels_last_safe
+from pytorch_nndct.apis import torch_quantizer
+import pytorch_nndct
+
+
 # -------------------------------------------------------------------
 # Import YOLO model families
 # You can extend this with more (V4, V5, V6...) under model/
@@ -60,20 +63,52 @@ def memfmt(t):
 #     # model.set_grid_xy(input_size = input_size)
 #     return model
 
-def load_model(version,pretrained,device: str,input_size: int, num_classes: int,model_type: str,anchors):
-    """
-    Initialize YOLO model and load checkpoint.
-    """
+# def load_model(version,pretrained,device: str,input_size: int, num_classes: int,model_type: str,anchors):
+#     """
+#     Initialize YOLO model and load checkpoint.
+#     """
    
     
-    model = YOLOv3_DPU(input_size = input_size, num_classes = num_classes, anchors = anchors, model_type = model_type, pretrained = False).to(device)
-    ckpt = torch.load('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt',map_location = 'cpu',weights_only = False)
-    sd = ckpt["model_state"] if "model_state" in ckpt else ckpt
-    missing,unexpected = model.load_state_dict(sd,strict = True)
-    print(f"[load] missing = {len(missing)} unexpected = {len(unexpected)}")
+#     model = YOLOv3_DPU(input_size = input_size, num_classes = num_classes, anchors = anchors, model_type = model_type, pretrained = False).to(device)
+#     ckpt = torch.load('/home/saurav/Desktop/Internship/ML-Internship-Saurav-Paudel/Paper_Implementation/ObjectDetection/UniYOLO/weights/yolov3-base.pt',map_location = 'cpu',weights_only = False)
+#     sd = ckpt["model_state"] if "model_state" in ckpt else ckpt
+#     missing,unexpected = model.load_state_dict(sd,strict = True)
+#     print(f"[load] missing = {len(missing)} unexpected = {len(unexpected)}")
+#     model.to(device).eval()
+#     model.zero_grad()
+#     # model.set_grid_xy(input_size = input_size)
+#     return model
+
+def load_model(mode:str,device: str,input_size: int, num_classes: int,model_type: str,anchors,model_path:str):
+    """
+    Initialize YOLO model and load checkpoint.
+    mode:"normal" -> uninspected model,some layers might not be supported in the dpu
+          "dpu" -> dpu supported model
+          "dpu_quantized" -> Quantized Model in DPU.
+         
+    """
+
+    if mode == "dpu":
+        model = YOLOv3_DPU(input_size = input_size, num_classes = num_classes, anchors = anchors, model_type = model_type, pretrained = False).to(device)
+        ckpt = torch.load(model_path,map_location = 'cpu',weights_only = False)
+        sd = ckpt["model_state"] if "model_state" in ckpt else ckpt
+        missing,unexpected = model.load_state_dict(sd,strict = True)
+        model.set_grid_xy(input_size = input_size)
+        print(f"[load] missing = {len(missing)} unexpected = {len(unexpected)}")
+    
+    elif mode == "normal":
+        model = YOLOv3(input_size = input_size, num_classes = num_classes, anchors = anchors, model_type = model_type, pretrained = False).to(device)
+        ckpt = torch.load(model_path,map_location = 'cpu',weights_only = False)
+        sd = ckpt["model_state"] if "model_state" in ckpt else ckpt
+        missing,unexpected = model.load_state_dict(sd,strict = True)
+        model.set_grid_xy(input_size = input_size)
+        print(f"[load] missing = {len(missing)} unexpected = {len(unexpected)}")
+    elif mode == "dpu_quantized":
+        model = torch.jit.load(model_path,map_location=device)
+        model = torch.jit.optimize_for_inference(model)
+    
     model.to(device).eval()
-    model.zero_grad()
-    # model.set_grid_xy(input_size = input_size)
+    model.zero_grad() 
     return model
 
 
@@ -127,28 +162,47 @@ def draw_dets(img, boxes_xyxy, labels, conf):
     return img
 
 
-def run_inference(model,model_version, device, source, input_size, conf_thresh, nms_iou_thresh):
+def run_inference(model,model_version, device, source, input_size, conf_thresh, nms_iou_thresh,anchors):
+  
     model.eval()
     tf_pre  = BasicTransform(input_size=input_size)
     tf_unlb = UnletterBox(new_shape=input_size)
 
     # ----- image -----
     if Path(source).suffix.lower() in [".jpg", ".png", ".jpeg", ".bmp"]:
-        img = cv2.imread(source)
         t0 = time.time()
-        image_tensor = preprocess(img, tf=tf_pre).to(device=device,memory_format=torch.channels_last)
-        print(image_tensor.is_contiguous(memory_format=torch.channels_last))
+        img = cv2.imread(source)
+        preprocess_start = time.time()
+        image_tensor = preprocess(img, tf=tf_pre).to(device=device)
+        preprocess_end = (time.time() - preprocess_start) * 1000
+
+        model_start = time.time()
         preds = model(image_tensor)
-        image_np = to_image(image_tensor) # letterboxed canvas as numpy (H,W,C)
+        model_end = (time.time() - model_start) * 1000
+
+        image_np = to_image(image_tensor.squeeze(0))
+        decoding_start = time.time()
+        if model_version == "V3_DPU":
+            decoded_52 = BoxDecoder(preds[0],anchors[0:3]).decode_predictions()
+            decoded_26 = BoxDecoder(preds[1],anchors[3:6]).decode_predictions()
+            decoded_13 = BoxDecoder(preds[2],anchors[6:9]).decode_predictions()
+            preds = torch.cat((decoded_52,decoded_26,decoded_13),dim = 1)      
+        decoding_end = (time.time() - decoding_start) * 1000
+        
+        post_start = time.time()
         image_out, boxes, labels, conf = post_process(
-            image_np, img, predictions=preds.detach().cpu().numpy(),
+            image_np, img, predictions=preds.squeeze(0).detach().cpu().numpy(),
             tf=tf_unlb, conf_thresh=conf_thresh, nms_iou_thresh=nms_iou_thresh,letterboxed=False
         )
-        fps = 1.0 / (time.time() - t0)
-        names = id2name(labels) if labels is not None and len(labels) else []
-        print(f"FPS: {fps:.2f} | labels: {', '.join(sorted(set(names)))}" if names else f"FPS: {fps:.2f} | labels: none")
+        post_end = post_start - time.time()
 
+        names = id2name(labels) if labels is not None and len(labels) else []
         vis = draw_dets(image_out, boxes, labels, conf)
+        
+        fps = 1.0 / (time.time() - t0)
+        print(f"FPS: {fps:.2f} (Model: {model_end} preprocess: {preprocess_end} decoding:{decoding_end} Post_proc:{post_end}) | labels: {', '.join(sorted(set(names)))}" if names else f"FPS: {fps:.2f} (Model: {model_end} preprocess: {preprocess_end} decoding:{decoding_end} Post_proc:{post_end}) | labels: none")
+        cv2.putText(vis, f"FPS: {fps:.2f}", (10, 30),
+            cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         cv2.imshow("Prediction", vis)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
@@ -158,29 +212,43 @@ def run_inference(model,model_version, device, source, input_size, conf_thresh, 
     cap = cv2.VideoCapture(0 if source == "webcam" else source)
     assert cap.isOpened(), f"Failed to open {source}"
     while True:
+        t0 = time.time()
         ret, frame = cap.read()
         if not ret:
             break
-        t0 = time.time()
-        image_tensor = preprocess(frame, tf=tf_pre).to(device).to(device=device,memory_format=torch.channels_last)        
+        preprocess_start = time.time()
+        image_tensor = preprocess(frame, tf=tf_pre).to(device=device)        
+        preprocess_time = (time.time() - preprocess_start) * 1000
+
+        model_time_start = time.time()
         preds = model(image_tensor)
+        model_time = (time.time() - model_time_start) * 1000
+
+        decoding_start = time.time()
         if model_version == "V3_DPU":
-            print(preds[0].shape)
-            decoded_52 = BoxDecoder(preds[0],model.anchors[0:3]).decode_predictions()
-            decoded_26 = BoxDecoder(preds[1],model.anchors[3:6]).decode_predictions()
-            decoded_13 = BoxDecoder(preds[2],model.anchors[6:9]).decode_predictions()
+            decoded_52 = BoxDecoder(preds[0],anchors[0:3]).decode_predictions()
+            decoded_26 = BoxDecoder(preds[1],anchors[3:6]).decode_predictions()
+            decoded_13 = BoxDecoder(preds[2],anchors[6:9]).decode_predictions()
             preds = torch.cat((decoded_52,decoded_26,decoded_13),dim = 1)
+        
+        decoding_end = (time.time() - decoding_start) * 1000
+
         image_np = to_image(image_tensor.squeeze(0))
+        
+
+        post_start = time.time()
         image_out, boxes, labels, conf = post_process(
-            image_np, frame, predictions=preds.squeeze(0).detach().numpy(),
+            image_np, frame, predictions=preds.squeeze(0).detach().cpu().numpy(),
             tf=tf_unlb, conf_thresh=conf_thresh, nms_iou_thresh=nms_iou_thresh,letterboxed=False
         )
-        fps = 1.0 / (time.time() - t0)
+        post_end = post_start - time.time()
         names = id2name(labels) if labels is not None and len(labels) else []
-        # print(f"FPS: {fps:.2f} | labels: {', '.join(sorted(set(names)))}" if names else f"FPS: {fps:.2f} | labels: none")
-        start_time = time.time()
         vis = draw_dets(image_out, boxes, labels, conf)
+        
         # print(f"Drawing:{time.time() - start_time}")
+        fps = 1.0 / (time.time() - t0)
+        print(f"FPS: {fps:.2f} (Preprocess time: {preprocess_time:.2f}\nModel Inference time: {model_time:.2f}\nPost Process:{post_end:.2f})| labels: {', '.join(sorted(set(names)))}" if names else f"FPS: {fps:.2f} (Preprocess time: {preprocess_time:.2f}\nModel Inference time: {model_time:.2f}\nPost Process:{post_end:.2f})| labels: none")
+
         cv2.putText(vis, f"FPS: {fps:.2f}", (10, 30),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         cv2.imshow("Prediction", vis)
@@ -189,14 +257,12 @@ def run_inference(model,model_version, device, source, input_size, conf_thresh, 
     cap.release()
     cv2.destroyAllWindows()
 
-
-
 # -------------------------------------------------------------------
 # Entry point
 # -------------------------------------------------------------------
 def parse_args():
     parser = argparse.ArgumentParser("YOLO Inference")
-    parser.add_argument("--pretrained", type=bool, required=False,
+    parser.add_argument("--model-path", type=str, required=True,
                         help="Path to .pt checkpoint")
     parser.add_argument("--source", type=str, required=True,
                         help="Source: image.jpg | video.mp4 | webcam")
@@ -210,22 +276,28 @@ def parse_args():
                         help = "IoU threshold for Post Processing Non-Max Suppression")
     parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu",
                         help="Device: cuda or cpu")
+    parser.add_argument("--mode",type = str,help = "type of model to run")
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    anchors = [[0.248,      0.7237237 ],
-          [0.36144578, 0.53      ],
-          [0.42,       0.9306667 ],
-          [0.456,      0.6858006 ],
-          [0.488,      0.8168168 ],
-          [0.6636637,  0.274     ],
-          [0.806,      0.648     ],
-          [0.8605263,  0.8736842 ],
-          [0.944,      0.5733333 ]]
-    model = load_model(args.model_version,pretrained = args.pretrained,device = args.device,input_size = args.input_size,num_classes = 20, model_type = 'base',anchors = anchors)
-    run_inference(model,args.model_version, args.device, args.source, args.input_size, args.conf_thresh,args.nms_iou_thresh)
+    anchors = [
+        [0.248,      0.7237237 ],
+        [0.36144578, 0.53      ],
+        [0.42,       0.9306667 ],
+        [0.456,      0.6858006 ],
+        [0.488,      0.8168168 ],
+        [0.6636637,  0.274     ],
+        [0.806,      0.648     ],
+        [0.8605263,  0.8736842 ],
+        [0.944,      0.5733333 ]
+        ]
+    model = load_model(args.mode,model_path=args.model_path,device = args.device,input_size = args.input_size,num_classes = 20, model_type = 'base',anchors = anchors)
+    run_inference(model,args.model_version, args.device, args.source, args.input_size, args.conf_thresh,args.nms_iou_thresh,anchors=torch.tensor(anchors))
+
+
+# def load_model(mode:str,device: str,input_size: int, num_classes: int,model_type: str,anchors,model_path:str):
 
 
 if __name__ == "__main__":

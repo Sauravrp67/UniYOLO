@@ -1,13 +1,13 @@
 import os
 import cv2
 import numpy as np
-
+import torch
 
 
 # ## Returns a [grid_size,grid_size] tensor. Used for decoding the prediction tensor.
-# def set_grid(grid_size):
-#     grid_y,grid_x = torch.meshgrid((torch.arange(grid_size),torch.arange(grid_size)),indexing="ij")
-#     return (grid_x,grid_y)
+def set_grid(grid_size):
+    grid_y,grid_x = torch.meshgrid((torch.arange(grid_size),torch.arange(grid_size)),indexing="ij")
+    return (grid_x,grid_y)
 
 def transform_xcycwh_to_x1y1wh(boxes):
     x1y1 = boxes[:, :2] - boxes[:, 2:] / 2

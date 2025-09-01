@@ -57,6 +57,12 @@ parser.add_argument(
 
 )
 
+parser.add_argument(
+    "--mode",
+    type = str,
+    defautl = None,
+    help = 'type of model to evaluate(normal,dpu,dpu_quantized)'
+)
 args,_ = parser.parse_known_args()
 # Get stored the require value for validate in args.
 
@@ -75,7 +81,7 @@ anchors = [
 
 model_dpu = load_model(mode = 'dpu_quantized',device = 'cpu',input_size = 416,num_classes = 20,model_type = "base",anchors = anchors,model_path = args.model_path)
 # model = torch.jit.load('/workspace/QuantizeCompileYolo/V3/quantize_result/YOLOv3_DPU_int.pt',map_location='cpu')
-val_loader = get_dataloader(args.data,batch_size = 8,subset_length = 200,train = False)
+val_loader = get_dataloader(args.data,batch_size = 8,subset_length = 500,train = False)
 # print(model_dpu)
 
 # _,image,_,_ = next(iter(val_loader))
@@ -94,7 +100,7 @@ base_dataset_class = val_loader.dataset.dataset
 idx = list(subset_class.indices)
 print(idx)
 
-base_dataset_class.generate_mAP_source(save_dir = Path("./data/eval_src"),mAP_filename = "subset.json",indices = idx)
+base_dataset_class.generate_mAP_source(save_dir = Path("./data/eval_src"),mAP_filename = "subset_500.json",indices = idx)
 
 args.mAP_filepath = Path(base_dataset_class.mAP_filepath) 
 args.exp_path = Path(args.exp_path)
@@ -102,7 +108,7 @@ args.exp_path = Path(args.exp_path)
 evaluator = Evaluator(args.mAP_filepath)
 val_loader = tqdm(val_loader, desc="[VAL]", ncols=115, leave=False)
 
-mAP_dict,eval_text = validate(args,anchors = anchors, dataloader = val_loader,model = model_dpu,evaluator = evaluator,save_result = True,dpu = True,save_filename="quantized_dpu_results.txt")
+mAP_dict,eval_text = validate(args,anchors = anchors, dataloader = val_loader,model = model_dpu,evaluator = evaluator,save_result = True,dpu = True,save_filename="Quantized_model_500_images.txt")
 
 print(mAP_dict)
 print(eval_text)

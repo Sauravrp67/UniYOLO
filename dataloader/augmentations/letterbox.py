@@ -34,6 +34,47 @@ class LetterBox:
             boxes[:,2:] /= (image.shape[1] / new_unpad[0],image.shape[0] / new_unpad[1])
         return image,boxes,labels
     
+
+# class LetterBox:
+#     """Same geometry as your LetterBox, but with reusable canvas."""
+#     def __init__(self, new_shape=(448, 448), color=(0, 0, 0)):
+#         self.new_shape = (new_shape, new_shape) if isinstance(new_shape, int) else tuple(new_shape)
+#         self.color = tuple(int(c) for c in color)
+#         H, W = self.new_shape
+#         # Preallocate the final canvas once (uint8)
+#         self.canvas = np.full((H, W, 3), self.color, dtype=np.uint8)
+#         self._last_hw = None  # track last input size
+
+#     def __call__(self, image, boxes=None, labels=None):
+#         Ht, Wt = self.new_shape
+#         h0, w0 = image.shape[:2]
+#         r = min(Ht / h0, Wt / w0)
+#         new_unpad = (int(round(w0 * r)), int(round(h0 * r)))  # (w, h)
+#         dw, dh = (Wt - new_unpad[0]) * 0.5, (Ht - new_unpad[1]) * 0.5
+#         left, right  = int(round(dw - 0.1)), int(round(dw + 0.1))
+#         top,  bottom = int(round(dh - 0.1)), int(round(dh + 0.1))
+
+#         # Resize in uint8 (faster)
+#         resized = cv2.resize(image, new_unpad, interpolation=cv2.INTER_LINEAR)
+
+#         # Reuse canvas: fill only the region we need to change
+#         canvas = self.canvas
+#         # Fast clear only borders that change from previous frame
+#         if self._last_hw != (h0, w0):
+#             canvas[:] = self.color  # full clear only when geometry changes
+#             self._last_hw = (h0, w0)
+#         canvas[top:top+new_unpad[1], left:left+new_unpad[0]] = resized
+
+#         # Boxes identical to your logic
+#         if boxes is not None and len(boxes) > 0:
+#             boxes = boxes.copy()
+#             boxes[:, :2] = (boxes[:, :2] * new_unpad) + (left, top)
+#             boxes[:, :2] /= (Wt, Ht)
+#             boxes[:, 2:] /= (Wt / new_unpad[0], Ht / new_unpad[1])
+
+#         return canvas, boxes, labels
+    
+
 import numpy as np
 import cv2
 

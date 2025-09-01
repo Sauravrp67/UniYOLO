@@ -7,7 +7,6 @@ from general import transform_xcycwh_to_x1y1x2y2,scale_to_original
 MEAN = 0.485, 0.456, 0.406 # RGB
 STD = 0.229, 0.224, 0.225 # RGB
 
-
 class SampleProvider:
     """
     Minimal Provider that fetches a random raw sample from Dataset.
@@ -56,7 +55,7 @@ def to_image(tensor, mean=MEAN, std=STD):
         t.mul_(s).add_(m)
     denorm_tensor.clamp_(min=0, max=1.)
     denorm_tensor *= 255
-    image = denorm_tensor.permute(1,2,0).numpy().astype(np.uint8)
+    image = denorm_tensor.permute(1,2,0).to('cpu').numpy().astype(np.uint8)
     return image
 
 

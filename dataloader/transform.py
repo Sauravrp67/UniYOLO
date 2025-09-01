@@ -47,6 +47,17 @@ class BasicTransform:
         image,boxes,labels = self.tfs(image,boxes,labels)
         return image,boxes,labels
 
+# class BasicTransform:
+#     def __init__(self, input_size, mean = MEAN, std = STD, color=(0, 0, 0)):
+#         self.lb = LetterBox(new_shape=input_size, color=color)
+#         self.norm = Normalize(mean=mean, std=std)
+
+#     def __call__(self, image, boxes=None, labels=None):
+#         # Keep uint8 for geometry, then normalize to float32 once.
+#         img_u8, boxes, labels = self.lb(image, boxes, labels)
+#         img_f32, boxes, labels = self.norm(img_u8, boxes, labels)
+#         return img_f32, boxes, labels
+
 class AugmentTransform:
     def __init__(self,input_size,dataset,mean = MEAN,std = STD,cutmix_mixup:bool = False,mosaic = True):
         mean = np.array(mean,dtype = np.float32)

@@ -2,18 +2,43 @@ import numpy as np
 import cv2
 import math
 
-
-
 import os
 import cv2
 import numpy as np
-from transform import UnletterBox
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
 
 
-# ## Returns a [grid_size,grid_size] tensor. Used for decoding the prediction tensor.
-# def set_grid(grid_size):
-#     grid_y,grid_x = torch.meshgrid((torch.arange(grid_size),torch.arange(grid_size)),indexing="ij")
-#     return (grid_x,grid_y)
+# from dataloader.transform import UnletterBox
+
+MEAN = 0.485, 0.456, 0.406 # RGB
+STD = 0.229, 0.<224, 0.225 # RGB
+
+CLASS_INFO = {
+    0:'aeroplane',1:'bicycle',2:'bird',3:'boat',4:'bottle',5:'bus',6:'car',7:'cat',
+    8:'chair',9:'cow',10:'diningtable',11:'dog',12:'horse',13:'motorbike',14:'person',
+    15:'pottedplant',16:'sheep',17:'sofa',18:'train',19:'tvmonitor'
+}
+
+def denormalize(image, mean=MEAN, std=STD):
+    image_temp = image.copy()
+    image_temp *= std
+    image_temp += mean
+    image_temp *= 255.
+    return image_temp.astype(np.uint8)
+
+def clip_xyxy(boxes:np.ndarray,W:int,H:int) -> np.ndarray:
+    if len(boxes) == 0:
+        return boxes
+    
+    boxes[:,[0,2]] = np.clip(boxes[:,[0,2]],0,max(0,W - 1))
+    boxes[:,[1,3]]= np.clip(boxes[:,[1,3]],0,max(0,H - 1))
+    return boxes
+
 
 def transform_xcycwh_to_x1y1wh(boxes):
     x1y1 = boxes[:, :2] - boxes[:, 2:] / 2
@@ -139,7 +164,7 @@ def preprocess(image, tf):
     input_image_np,_,_ = tf(image,boxes = None,labels = None)
     return input_image_np
 
-def post_process(image_letterboxed:np.ndarray,image_original:np.ndarray,predictions:np.ndarray,tf:UnletterBox,letterboxed:bool = False,conf_thresh:float = 0.2,nms_iou_thresh:float = 0.5):
+def post_process(image_letterboxed:np.ndarray,image_original:np.ndarray,predictions:np.ndarray,tf,letterboxed:bool = False,conf_thresh:float = 0.2,nms_iou_thresh:float = 0.5):
     predictions[:,1:5] = transform_xcycwh_to_x1y1x2y2(boxes = predictions[:,1:5],clip_max = 1.0)
     predictions = filter_confidence(predictions,conf_threshold=conf_thresh)
     predictions = run_NMS(predictions,iou_threshold=nms_iou_thresh)
@@ -158,12 +183,6 @@ def post_process(image_letterboxed:np.ndarray,image_original:np.ndarray,predicti
     conf = predictions[:,-1]
 
     return image_out,boxes,label,conf
-
-CLASS_INFO = {
-    0:'aeroplane',1:'bicycle',2:'bird',3:'boat',4:'bottle',5:'bus',6:'car',7:'cat',
-    8:'chair',9:'cow',10:'diningtable',11:'dog',12:'horse',13:'motorbike',14:'person',
-    15:'pottedplant',16:'sheep',17:'sofa',18:'train',19:'tvmonitor'
-}
 
 def id2name(ids):
     return [CLASS_INFO.get(int(i), str(int(i))) for i in ids]
@@ -283,3 +302,8 @@ class BoxDecoderNP:
 
         # Stack to (B,N,A,4)
         return np.stack([xc, yc, w, h], axis=-1).astype(np.float32, copy=False)
+
+def concat_heads_flatten_anchors(t0, t1, t2):
+    B, A, D = t0.shape[0], t0.shape[2], t0.shape[3]
+    def flat(x): return x.reshape(B, -1, D)  # (B, S*A, 25)
+    return np.concatenate([flat(t0), flat(t1), flat(t2)], axis=1)

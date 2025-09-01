@@ -1,9 +1,7 @@
 import os
-import re
 import sys
 import argparse
-import time
-import random
+
 
 from pathlib import Path
 import sys
@@ -27,8 +25,7 @@ anchors = [[0.248,      0.7237237 ],
     [0.8605263,  0.8736842 ],
     [0.944,      0.5733333 ]]
 
-
-model = YOLOv3_DPU(input_size = 416,num_classes = 20,anchors = anchors,model_type = "base")
+model = YOLOv3(input_size = 416,num_classes = 20,anchors = anchors,model_type = "base")
 
 dummy_input = torch.randn(1,3,416,416)
 target = "0x101000056010407"
