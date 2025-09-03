@@ -8,18 +8,19 @@ from tqdm import tqdm
 
 import sys
 from pathlib import Path
+from quantize_utils import load_model,evaluate,get_dataloader
 
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
    sys.path.append(str(ROOT))
 
 from dataloader import Dataset,AugmentTransform
-from Paper_Implementation.ObjectDetection.UniYOLO.QuantizeCompileYolo.V3.quantize_utils import to_image
+from quantize_utils import to_image
 
 
 model = resnet18(pretrained=True).to('cpu')
 input_signature = torch.randn([1,3,224,224],dtype = torch.float32)
-runner = get_pruning_runner(model,input_signature,'iterative')
+runner = get_pruning_runner(model,input_signature,'one_step')
 
 
 class AverageMeter(object):
@@ -84,22 +85,16 @@ def calibration_fn(model, dataloader, number_forward=100):
       if index > number_forward:
         break
 
-train_dataset = Dataset(yaml_path='/workspace/data/voc_vitis.yaml',phase = 'train')
-k = 100
-train_transformer = AugmentTransform(input_size = 416,dataset = train_dataset)
-train_dataset.load_transformer(transformer = train_transformer)
-subset_idx = list(range(min(k,len(train_dataset))))
-train_subset = Subset(train_dataset,subset_idx)
 
-train_loader = DataLoader(dataset = train_subset,collate_fn = Dataset.collate_fn,batch_size = 4,shuffle = True,pin_memory = True,num_workers = 1)
+train_loader = get_dataloader('/workspace/data/voc_vitis.yaml',batch_size = 8)
 
-# runner.search(gpus=[], calibration_fn=calibration_fn, calib_args=(train_loader,), eval_fn=eval_fn, eval_args=(train_loader,), num_subnet=10, removal_ratio=0.7)
+best_idx = runner.search(gpus=[], calibration_fn=calibration_fn, calib_args=(train_loader,), eval_fn=eval_fn, eval_args=(train_loader,), num_subnet=10, removal_ratio=0.7)
 
 # model = runner.prune(removal_ratio=0.7, index=None)
 
-runner.ana(eval_fn, args=(train_loader,),gpus = None)
+# runner.ana(eval_fn, args=(train_loader,),gpus = None)
 
-model = runner.prune(removal_ratio=0.2)
+model = runner.prune(removal_ratio=0.2,index = best_idx)
 
 
 

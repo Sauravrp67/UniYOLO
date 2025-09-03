@@ -85,81 +85,6 @@ def run_model(dpu_runner,image):
 
     return outputData,inputData[0]
 
-# def run_model(dpu_runner, image):
-#     """
-#     image: float32 NHWC letterboxed+normalized frame from your preprocess()
-#     Returns:
-#       - output_list: list of 3 float32 NHWC (1, G, A, P) tensors (dequantized)
-#       - input_nhwc:  float32 NHWC (1, H, W, C) copy of 'image' for downstream use
-#     """
-#     import numpy as np
-#     import time
-
-#     # ----- one-time setup (cached) -----
-#     if not hasattr(run_model, "_ctx"):
-#         in_t  = dpu_runner.get_input_tensors()[0]     # XIR Tensor
-#         out_t = dpu_runner.get_output_tensors()       # list[XIR Tensor]
-
-#         def _get_fixpos(t):
-#             for k in ("fix_point", "quantize_pos", "fix_pos"):
-#                 if hasattr(t, "has_attr") and t.has_attr(k):
-#                     return t.get_attr(k)
-#             raise RuntimeError(f"No fix-point attr on tensor '{getattr(t, 'name', '')}'")
-
-#         in_fixpos   = _get_fixpos(in_t)
-#         out_fixpos  = [_get_fixpos(t) for t in out_t]
-
-#         in_shape    = (1, *in_t.dims[1:])           # e.g. (1, 416, 416, 3) NHWC
-#         out_shapes  = [(1, *t.dims[1:]) for t in out_t]
-
-#         # Preallocate INT8 buffers in the shapes the DPU wants.
-#         input_bufs  = [np.empty(in_shape,  dtype=np.int8, order="C")]
-#         output_bufs = [np.empty(s,         dtype=np.int8, order="C") for s in out_shapes]
-
-#         # Save context for reuse
-#         run_model._ctx = {
-#             "runner": dpu_runner,
-#             "in_shape": in_shape,
-#             "out_shapes": out_shapes,
-#             "input_bufs": input_bufs,
-#             "output_bufs": output_bufs,
-#             "in_scale": float(1 << int(in_fixpos)),
-#             "out_scales": [float(1 << int(fp)) for fp in out_fixpos],
-#         }
-
-#     ctx = run_model._ctx
-
-#     # ----- prepare input (quantize to INT8, NHWC) -----
-#     # Make sure the incoming image is HWC float32 with expected spatial size.
-#     HWC = ctx["in_shape"][1:]
-#     if image.shape != HWC:
-#         # Keep behavior identical to your old code (reshape if needed)
-#         img_f32 = image.reshape(HWC).astype(np.float32, copy=False)
-#     else:
-#         img_f32 = image.astype(np.float32, copy=False)
-
-#     # Quantize: symmetric INT8, zero-point = 0
-#     # q = round(x * scale) clipped to [-128, 127]
-#     q = np.rint(img_f32 * ctx["in_scale"]).clip(-128, 127).astype(np.int8)
-#     # Single copy into the preallocated DPU input buffer
-#     np.copyto(ctx["input_bufs"][0][0], q)
-
-#     # ----- run DPU -----
-#     jid = ctx["runner"].execute_async(ctx["input_bufs"], ctx["output_bufs"])
-#     ctx["runner"].wait(jid)
-
-#     # ----- dequantize outputs back to float32 (so downstream stays unchanged) -----
-#     outs_f32 = [
-#         buf.astype(np.float32) / scale
-#         for buf, scale in zip(ctx["output_bufs"], ctx["out_scales"])
-#     ]
-
-#     # Your downstream expects the second return to be the float32 input batched
-#     input_nhwc = img_f32.reshape(ctx["in_shape"])
-
-#     return outs_f32, input_nhwc
-
-
 def run_inference(dpu_runner,source,input_size,mode,conf_thresh,nms_iou_thresh,anchors):
     tf_pre = BasicTransform(input_size = input_size)
     tf_unlb = UnletterBox(new_shape = input_size)
@@ -235,55 +160,6 @@ def run_inference(dpu_runner,source,input_size,mode,conf_thresh,nms_iou_thresh,a
                 break
         cap.release()
         cv2.destroyAllWindows()
-
-# class DpuRunnerCtx:
-#     def __init__(self, runner):
-#         self.runner = runner
-#         self.in_t  = runner.get_input_tensors()[0]
-#         self.out_t = runner.get_output_tensors()
-
-#         # Shapes are NHWC on KV260 (e.g., [1, 416, 416, 3])
-#         self.in_shape  = (1, *self.in_t.dims[1:])
-#         self.out_shapes = [(1, *t.dims[1:]) for t in self.out_t]
-
-#         # Preallocate INT8 buffers (what the DPU actually uses)
-#         self.inputs  = [np.empty(self.in_shape, dtype=np.int8,  order='C')]
-#         self.outputs = [np.empty(s,          dtype=np.int8,  order='C') for s in self.out_shapes]
-
-#         # Quant scales from tensor attrs (Vitis uses symmetric, power-of-two scale)
-#         self.in_fixpos  = self._get_fixpos(self.in_t)
-#         self.out_fixpos = [self._get_fixpos(t) for t in self.out_t]
-#         self.in_scale   = 1 << self.in_fixpos
-#         self.out_scales = [1 << fp for fp in self.out_fixpos]
-
-#     @staticmethod
-#     def _get_fixpos(t):
-#         if t.has_attr("fix_point"):
-#             return t.get_attr("fix_point")
-#         if t.has_attr("quantize_pos"):
-#             return t.get_attr("quantize_pos")
-#         raise RuntimeError("Tensor lacks fix_point/quantize_pos.")
-
-#     def infer(self, img_f32_nhwc):
-#         """
-#         img_f32_nhwc: float32 NHWC after your mean/std normalization (or 0..1),
-#         quantized here to int8 using in_scale.
-#         Returns list of dequantized float32 outputs in NHWC.
-#         """
-#         # Quantize to int8 (symmetric, zero-point=0)
-#         q = np.rint(img_f32_nhwc * self.in_scale).clip(-128, 127).astype(np.int8)
-#         np.copyto(self.inputs[0][0], q)  # one copy into prealloc buffer
-
-#         t0 = time.time()
-#         jid = self.runner.execute_async(self.inputs, self.outputs)
-#         self.runner.wait(jid)
-#         t1 = time.time()
-
-#         # Dequantize outputs (vectorized)
-#         outs = [o.astype(np.float32) / s for o, s in zip(self.outputs, self.out_scales)]
-#         return outs, (t1 - t0) * 1000.0  # ms
-
-    
         
 # python3 dpu_inference.py <xmodel_file> <image/video/webcam(1,2,0)> <image_path/video_path> <Confidence Threshold> <NMS IOU>"
 def main(argv):
@@ -308,29 +184,6 @@ def main(argv):
     #"""Creates DPU runner,associated with the DPU subgraph"""
     dpu_runners = vart.Runner.create_runner(subgraphs[0],"run")
     run_inference(dpu_runner = dpu_runners,source = source_path,mode = mode,input_size = 416,conf_thresh = 0.3,nms_iou_thresh = 0.5,anchors=anchors)
-
-    # print(input.shape)
-    # print(output_list[0].shape)
-    # print(output_list[1].shape)
-    # print(output_list[2].shape)
-    
-    # np.save("./dump/input.npy",input)
-    # np.save("./dump/tensor0.npy",output_list[0])
-    # np.save("./dump/tensor1.npy",output_list[1])
-    # np.save("./dump/tensor2.npy",output_list[2])
-
-    # print("Saurav")
-    # print(subgraphs)
-    # print(dpu_runners)
-    
-    # input_tensors = dpu_runners.get_input_tensors()
-    # output_tensor = dpu_runners.get_output_tensors()
-
-    # print(input_tensors[0].dims)
-    # print(output_tensor[0].dims)
-    # print(output_tensor[1].dims)
-    # print(output_tensor[2].dims)
-
 
 
 if __name__ == "__main__":

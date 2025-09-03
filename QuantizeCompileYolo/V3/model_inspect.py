@@ -14,6 +14,7 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
 from model import YOLOv3,YOLOv3_DPU
+from pytorch_nndct.apis import Inspector
 
 anchors = [[0.248,      0.7237237 ],
     [0.36144578, 0.53      ],

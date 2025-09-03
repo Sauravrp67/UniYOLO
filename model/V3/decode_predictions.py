@@ -11,8 +11,8 @@ from utils import set_grid
 
 
 def do_sigmoid(predictions):
-     pred_obj = torch.nn.Hardsigmoid()(predictions[...,:1])
-     pred_box_txty = torch.nn.Hardsigmoid()(predictions[...,1:3])
+     pred_obj = torch.sigmoid(predictions[...,:1])
+     pred_box_txty = torch.ssigmoid(predictions[...,1:3])
      pred_box_twth = predictions[...,3:5]
      pred_cls = predictions[...,5:]
 

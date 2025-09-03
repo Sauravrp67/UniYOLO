@@ -16,7 +16,7 @@ if str(ROOT) not in sys.path:
 # from dataloader.transform import UnletterBox
 
 MEAN = 0.485, 0.456, 0.406 # RGB
-STD = 0.229, 0.<224, 0.225 # RGB
+STD = 0.229, 0.224, 0.225 # RGB
 
 CLASS_INFO = {
     0:'aeroplane',1:'bicycle',2:'bird',3:'boat',4:'bottle',5:'bus',6:'car',7:'cat',
