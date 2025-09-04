@@ -3,12 +3,13 @@ import os
 import time
 from pathlib import Path
 from typing import Tuple, Optional
+import random
 
 
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader,Subset
 from torchvision import datasets,transforms,models
 from tqdm import tqdm
 import torch_pruning as tp
@@ -43,6 +44,22 @@ def accuracy(output: torch.Tensor, target: torch.Tensor, topk=(1, 5)) -> Tuple[f
         res.append((correct_k.mul_(100.0 / batch_size)).item())
     return tuple(res)
 
+
+def build_resnet18(num_classes=10, pretrained=True):
+    """Torchvision resnet18 adapted for CIFAR-10."""
+    try:
+        # torchvision>=0.13 style
+        weights = models.ResNet18_Weights.DEFAULT if pretrained else None
+        model = models.resnet18(weights=weights)
+    except Exception:
+        model = models.resnet18(pretrained=pretrained)
+
+    # Replace final FC for 10 classes
+    in_features = model.fc.in_features
+    model.fc = nn.Linear(in_features, num_classes)
+    return model
+
+
 def cifar10_loaders(data_dir: str, batch_size: int = 128, workers: int = 4, input_size: int = 224):
     if not os.path.exists(data_dir):
         os.mkdir(data_dir)
@@ -68,9 +85,14 @@ def cifar10_loaders(data_dir: str, batch_size: int = 128, workers: int = 4, inpu
 
     train_set = datasets.CIFAR10(root=data_dir, train=True, download=True, transform=train_tf)
     test_set  = datasets.CIFAR10(root=data_dir, train=False, download=True, transform=test_tf)
-
+    k = 200
+    all_idx_train = list(range(len(test_set)))
+    subset_idx = random.sample(all_idx_train,k = k)
+    test_subset = Subset(test_set,subset_idx)
+    
     train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=workers, pin_memory=True)
-    test_loader  = DataLoader(test_set,  batch_size=batch_size, shuffle=False, num_workers=workers, pin_memory=True)
+    test_loader  = DataLoader(test_subset,  batch_size=batch_size, shuffle=False, num_workers=workers, pin_memory=True)
+    
     return train_loader, test_loader
 
 @torch.no_grad()
@@ -162,10 +184,11 @@ if __name__ == "__main__":
     
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     train_loader, test_loader = cifar10_loaders(args.data_dir, args.batch_size, args.workers, args.input_size)
-
     criterion = nn.CrossEntropyLoss().to(device)
-
-    model = torch.load('./best_pruned.pth',map_location="cpu")
+    # model = torch.load('./best_pruned.pth',map_location="cpu")
+    model  = build_resnet18()
+    state_dict = torch.load('/workspace/QuantizeCompileYolo/resnet18/best_float.pth',map_location="cpu")
+    model.load_state_dict(state_dict=state_dict['state_dict'],strict = True)
     
     example_inputs = torch.randn(1, 3, args.input_size, args.input_size)
 

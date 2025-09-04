@@ -24,7 +24,6 @@ parser.add_argument("--subset",
                   required = False,
                   default = 100)
 
-
 parser.add_argument("--model-path", type=str, required=True,
                         help="Path to .pt checkpoint")
 
