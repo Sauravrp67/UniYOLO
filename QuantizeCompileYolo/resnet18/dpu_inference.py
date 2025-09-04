@@ -29,58 +29,53 @@ def get_child_subgraph_dpu(graph: "Graph") -> List["Subgraph"]:
         if cs.has_attr("device") and cs.get_attr("device").upper() == "DPU"
     ]
 
-def run_model(dpu_runner,image):
-    tensor_calculation_time = time.time()
+def run_model(dpu_runner, image):
+    t0 = time.perf_counter()
     inputTensors = dpu_runner.get_input_tensors()
+    t1 = time.perf_counter()
     outputTensors = dpu_runner.get_output_tensors()
+    t2 = time.perf_counter()
 
-    outputgrid0 = outputTensors[0].dims[1]
-    outputanchors0 = outputTensors[0].dims[2]
-    outputpreds0 = outputTensors[0].dims[3]
-
-    outputgrid1 = outputTensors[1].dims[1]
-    outputanchors1 = outputTensors[1].dims[2]
-    outputpreds1 = outputTensors[1].dims[3]
-
-    outputgrid2 = outputTensors[2].dims[1]
-    outputanchors2 = outputTensors[2].dims[2]
-    outputpreds2 = outputTensors[2].dims[3]
-
-    outputSize_0 = (outputgrid0,outputanchors0,outputpreds0)
-    outputSize_1 = (outputgrid1,outputanchors1,outputpreds1)
-    outputSize_2 = (outputgrid2,outputanchors2,outputpreds2)
-
+    outputShape = outputTensors[0].dims[1]
+    t3 = time.perf_counter()
     runSize = 1
     shapeIn = (runSize,) + tuple([inputTensors[0].dims[i] for i in range(inputTensors[0].ndim)][1:])
-    
+    t4 = time.perf_counter()
+
     outputData = []
     inputData = []
+    t5 = time.perf_counter()
 
-    outputData.append(np.empty((runSize,*outputSize_0),dtype = np.float32,order='C'))
-    outputData.append(np.empty((runSize,*outputSize_1),dtype = np.float32,order='C'))
-    outputData.append(np.empty((runSize,*outputSize_2),dtype = np.float32,order='C'))
+    outputData.append(np.empty((runSize, outputShape), dtype=np.float32, order='C'))
+    t6 = time.perf_counter()
+    inputData.append(np.empty((shapeIn), dtype=np.float32, order="C"))
+    t7 = time.perf_counter()
 
-    # inputData.append(np.empty((shapeIn),dtype = np.float32, order = "C"))
-    # tensor_calculation_end  = (time.time() - tensor_calculation_time) * 1000
-    # print(f"TensorShape Aquisition from DPU graph:{tensor_calculation_end:.2f}")
-    # """
-    # input buffer
-    # """
-    # filling_buffer_start = time.time()
-    # imageRun = inputData[0]
-    # imageRun[0,...] = image.reshape(inputTensors[0].dims[1],inputTensors[0].dims[2],inputTensors[0].dims[3])
-    # filling_buffer_end = (time.time() - filling_buffer_start) * 1000
-    # # .reshape(inputTensors[0].dims[1],inputTensors[0].dims[2],inputTensors[0].dims[3])
-    # print(f"Fill Buffer:{filling_buffer_end:.2f}")
+    imageRun = inputData[0]
+    imageRun[0, ...] = image.reshape(inputTensors[0].dims[1],
+                                     inputTensors[0].dims[2],
+                                     inputTensors[0].dims[3])
+    t8 = time.perf_counter()
 
-    # running_model = time.time()
-    # """Execute Async"""
-    # job_id = dpu_runner.execute_async(inputData,outputData)
-    # dpu_runner.wait(job_id)
-    # running_model_end = (time.time() - running_model) * 1000
-    # print(f"Running Model :{running_model_end:.2f}")
+    job_id = dpu_runner.execute_async(inputData, outputData)
+    t9 = time.perf_counter()
+    dpu_runner.wait(job_id)
+    t10 = time.perf_counter()
 
-    return outputData,inputData[0]
+    # Report timings in ms
+    print(f"get_input_tensors: {(t1 - t0) * 1000:.3f} ms")
+    print(f"get_output_tensors: {(t2 - t1) * 1000:.3f} ms")
+    print(f"outputShape assign: {(t3 - t2) * 1000:.3f} ms")
+    print(f"shapeIn calculation: {(t4 - t3) * 1000:.3f} ms")
+    print(f"lists init: {(t5 - t4) * 1000:.3f} ms")
+    print(f"alloc outputData: {(t6 - t5) * 1000:.3f} ms")
+    print(f"alloc inputData: {(t7 - t6) * 1000:.3f} ms")
+    print(f"buffer filling: {(t8 - t7) * 1000:.3f} ms")
+    print(f"execute_async enqueue: {(t9 - t8) * 1000:.3f} ms")
+    print(f"DPU wait: {(t10 - t9) * 1000:.3f} ms")
+    print(f"TOTAL run_model: {(t10 - t0) * 1000:.3f} ms")
+
+    return outputData, inputData[0]
 
 MEAN = 0.485, 0.456, 0.406 # RGB
 STD = 0.229, 0.224, 0.225 
@@ -91,33 +86,72 @@ class Normalize:
         self.std = np.array(std,dtype = np.float32)
     
     def __call__(self,image,boxes = None,labels = None):
-        image /= 255.0
+        image /= 255
         image -= self.mean
         image /= self.std
         return image,boxes,labels
+
+def softmax(logits, axis=-1):
+    x = logits - np.max(logits, axis=axis, keepdims=True)
+    e = np.exp(x)
+    return e / np.sum(e, axis=axis, keepdims=True)
+
+def load_labels(path):
+    with open(path, "r") as f:
+        return [line.strip() for line in f]
 
 def main(argv):
     os.makedirs("./dump",exist_ok = True)
     mode = argv[2]
     source_path = argv[3]
-    # conf_thresh = argv[4]
-    # nms_iou_thresh = argv[5]
-    
+
     g = xir.Graph.deserialize(argv[1])
     subgraphs = get_child_subgraph_dpu(g)
+
+    runner_create_t0 = time.perf_counter()
+    dpu_runners = vart.Runner.create_runner(subgraphs[0], "run")
+    runner_create_ms = (time.perf_counter() - runner_create_t0) * 1000.0
+
     image = cv2.imread(source_path)
+    t0 = time.perf_counter()
     image = cv2.resize(image,(224,224),interpolation = cv2.INTER_LINEAR)
+    image = image.astype(np.float32)
     image,_,_ = Normalize(mean = MEAN,std=STD)(image = image,boxes = None,labels=None)
+    preprocess = (time.perf_counter()  - t0) * 1000
 
+    infer_t0 = time.perf_counter()
+    output, input_buf = run_model(dpu_runners, image)
+    infer_ms = (time.perf_counter() - infer_t0) * 1000.0
 
-    print(image.shape)
-    #"""Creates DPU runner,associated with the DPU subgraph"""
-    dpu_runners = vart.Runner.create_runner(subgraphs[0],"run")
-    output,input = run_model(dpu_runners,image)
+    post_t0 = time.perf_counter()
+    cls = softmax(output[0])                # shape (1, 10)
+    pred_idx = np.argmax(cls, axis=-1).item()  # <- avoid deprecation warning
+    post_ms = (time.perf_counter() - post_t0) * 1000.0
+
+    labels = load_labels("labels.txt")
+    pred_name = labels[pred_idx] if pred_idx < len(labels) else str(pred_idx)
+
+    disp_img = cv2.imread(source_path)
+    disp_img = cv2.resize(disp_img, (224, 224))
+
+    conf = float(np.max(cls))
+    total_elapsed_s = (time.perf_counter() - t0)   # t0 was pre-processing start
+    fps = 1.0 / total_elapsed_s if total_elapsed_s > 0 else 0.0
+
+    cv2.putText(disp_img, f"{pred_name}: {conf:.2f}", (10, 30),
+                cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+    cv2.putText(disp_img, f"FPS: {fps:.2f}", (10, 60),
+                cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
     
-    print(output)
-    print(input.shape)
-    # run_inference(dpu_runner = dpu_runners,source = source_path,mode = mode,input_size = 416,conf_thresh = 0.3,nms_iou_thresh = 0.5,anchors=anchors)
+    print(f"Runner create: {runner_create_ms:.3f} ms")
+    print(f"Model inference (run_model): {infer_ms:.3f} ms")
+    print(f"Pre-process: {preprocess:.3f} ms")
+    print(f"Post-process: {post_ms:.3f} ms")
+
+    print(f"FPS:{fps}")
+    cv2.imshow("Prediction", disp_img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
