@@ -10,13 +10,20 @@ if str(ROOT) not in sys.path:
 from utils import set_grid
 
 
-def do_sigmoid(predictions):
-     pred_obj = torch.sigmoid(predictions[...,:1])
-     pred_box_txty = torch.ssigmoid(predictions[...,1:3])
-     pred_box_twth = predictions[...,3:5]
-     pred_cls = predictions[...,5:]
+def do_sigmoid(predictions,hard_sig = False):
+    if not hard_sig:
+        pred_obj = torch.sigmoid(predictions[...,:1])
+        pred_box_txty = torch.sigmoid(predictions[...,1:3])
+        pred_box_twth = predictions[...,3:5]
+        pred_cls = predictions[...,5:]
 
-     return torch.cat((pred_obj, pred_box_txty, pred_box_twth, pred_cls), dim=-1)
+    else:
+        pred_obj = torch.nn.Hardsigmoid(predictions[...,:1])
+        pred_box_txty = torch.nn.Hardsigmoid(predictions[...,1:3])
+        pred_box_twth = predictions[...,3:5]
+        pred_cls = predictions[...,5:]
+    
+    return torch.cat((pred_obj, pred_box_txty, pred_box_twth, pred_cls), dim=-1)
 
 class BoxDecoder():
     def __init__(self,predictions,anchors):
